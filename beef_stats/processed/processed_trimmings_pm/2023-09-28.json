@@ -1,0 +1,119 @@
+{
+  "report_code": "LM_XB400",
+  "report_date": "2023-09-28",
+  "run": "PM",
+  "current_volume": {
+    "central": {
+      "loads": 16.18,
+      "pounds": 647255
+    },
+    "national": {
+      "loads": 34.08,
+      "pounds": 1363365
+    }
+  },
+  "sections": {
+    "markets": [
+      {
+        "market_key": "central",
+        "lines": [
+          {
+            "category": "Chemical Lean",
+            "lean_label": "Fresh 75%",
+            "trades": 0,
+            "pounds": 0,
+            "low": 0.0,
+            "high": 0.0,
+            "weighted_average": 0.0
+          },
+          {
+            "category": "Chemical Lean",
+            "lean_label": "Frozen 75%",
+            "trades": 0,
+            "pounds": 0,
+            "low": 0.0,
+            "high": 0.0,
+            "weighted_average": 0.0
+          },
+          {
+            "category": "Chemical Lean",
+            "lean_label": "Fresh 73%",
+            "trades": 0,
+            "pounds": 0,
+            "low": 0.0,
+            "high": 0.0,
+            "weighted_average": 0.0
+          },
+          {
+            "category": "Chemical Lean",
+            "lean_label": "Frozen 73%",
+            "trades": 0,
+            "pounds": 0,
+            "low": 0.0,
+            "high": 0.0,
+            "weighted_average": 0.0
+          }
+        ]
+      },
+      {
+        "market_key": "national",
+        "lines": [
+          {
+            "category": "Chemical Lean",
+            "lean_label": "Fresh 75%",
+            "trades": 0,
+            "pounds": 0,
+            "low": 0.0,
+            "high": 0.0,
+            "weighted_average": 0.0
+          },
+          {
+            "category": "Chemical Lean",
+            "lean_label": "Frozen 75%",
+            "trades": 0,
+            "pounds": 0,
+            "low": 0.0,
+            "high": 0.0,
+            "weighted_average": 0.0
+          },
+          {
+            "category": "Chemical Lean",
+            "lean_label": "Fresh 73%",
+            "trades": 0,
+            "pounds": 0,
+            "low": 0.0,
+            "high": 0.0,
+            "weighted_average": 0.0
+          },
+          {
+            "category": "Chemical Lean",
+            "lean_label": "Frozen 73%",
+            "trades": 0,
+            "pounds": 0,
+            "low": 0.0,
+            "high": 0.0,
+            "weighted_average": 0.0
+          },
+          {
+            "category": "Chemical Lean",
+            "lean_label": "Fresh 50%",
+            "trades": 6,
+            "pounds": 161662,
+            "low": 123.0,
+            "high": 145.0,
+            "weighted_average": 134.68
+          },
+          {
+            "category": "Chemical Lean",
+            "lean_label": "Frozen 50%",
+            "trades": 0,
+            "pounds": 0,
+            "low": null,
+            "high": null,
+            "weighted_average": null
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,128 @@
+Simplified Schema Overview (One Table per JSON Category)
+=======================================================
+
+Intent
+- Keep every data point from the processed JSONs by storing the full document as JSONB in a single landing table per category.
+- Add a small set of “convenience” columns per row so you can filter and join by date/run/report id without shredding the JSON.
+- Link datasets across categories by report_date (and run where applicable) when you query.
+
+Tables
+
+1) boxed_am_reports_json
+- id: BIGSERIAL PK
+- report_id: TEXT (e.g., "LM_XB402")
+- report_date: DATE (e.g., "2018-11-21")
+- run: run_enum DEFAULT 'AM' NOT NULL
+- location: TEXT
+- source: TEXT
+- choice_select_spread: NUMERIC
+- total_load_count: INTEGER
+- source_file: TEXT (filename ingested)
+- payload: JSONB NOT NULL (entire processed JSON)
+- created_at: TIMESTAMPTZ DEFAULT now()
+- Unique suggestion: (report_id, report_date, run)
+- JSON source reference: beef_stats/processed/processed_boxed_am/2018-11-21.json
+
+2) boxed_pm_reports_json
+- Same as boxed_am_reports_json but run DEFAULT 'PM'.
+- JSON source reference: beef_stats/processed/processed_boxed_pm/2018-11-21.json
+
+3) catalog_reports_json
+- id: BIGSERIAL PK
+- report_code: TEXT (e.g., "LM_XB403")
+- report_name: TEXT
+- report_date: DATE
+- location: TEXT
+- source_file: TEXT
+- payload: JSONB NOT NULL (entire finished catalog JSON)
+- created_at: TIMESTAMPTZ DEFAULT now()
+- Unique suggestion: (report_code, report_date)
+- JSON source reference: beef_stats/processed/processed_catalog/finished_catalog/2018-12-04.json
+
+4) index_reports_json
+- id: BIGSERIAL PK
+- report_id: TEXT (e.g., "NW_LS410")
+- report_date: DATE (from JSON key "date")
+- location: TEXT
+- source: TEXT
+- source_file: TEXT
+- payload: JSONB NOT NULL
+- created_at: TIMESTAMPTZ DEFAULT now()
+- Unique suggestion: (report_id, report_date)
+- JSON source reference: beef_stats/processed/processed_index/2018-11-21_NW_LS410.json
+
+5) trimmings_am_reports_json
+- id: BIGSERIAL PK
+- report_code: TEXT (e.g., "LM_XB400")
+- report_date: DATE
+- run: run_enum DEFAULT 'AM' NOT NULL
+- source_file: TEXT
+- payload: JSONB NOT NULL
+- created_at: TIMESTAMPTZ DEFAULT now()
+- Unique suggestion: (report_code, report_date, run)
+- JSON source reference: beef_stats/processed/processed_trimmings_am/2018-11-21.json
+
+6) trimmings_pm_reports_json
+- Same as trimmings_am_reports_json but run DEFAULT 'PM'.
+- JSON source reference: beef_stats/processed/processed_trimmings_pm/2018-11-27.json
+
+JSON → Columns (convenience) mapping
+- Boxed (AM/PM):
+  - report_id ← payload->>'report_id'
+  - report_date ← (payload->>'report_date')::date
+  - run ← (payload->>'run')::run_enum
+  - location ← payload->>'location'
+  - source ← payload->>'source'
+  - choice_select_spread ← (payload->>'choice_select_spread')::numeric
+  - total_load_count ← (payload->>'total_load_count')::int
+
+- Catalog (finished_catalog JSON structure):
+  - report_code ← payload#>>'{report,report_code}'
+  - report_name ← payload#>>'{report,report_name}'
+  - report_date ← (payload#>>'{report,report_date}')::date
+  - location ← payload#>>'{report,location}'
+
+- Index:
+  - report_id ← payload->>'report_id'
+  - report_date ← (payload->>'date')::date
+  - location ← payload->>'location'
+  - source ← payload->>'source'
+
+- Trimmings (AM/PM):
+  - report_code ← payload->>'report_code'
+  - report_date ← (payload->>'report_date')::date
+  - run ← (payload->>'run')::run_enum
+
+Date linking guideline
+- Link across tables by report_date (and run for boxed/trimmings). For example:
+  - JOIN boxed_am_reports_json b ON b.report_date = c.report_date  (catalog)
+  - JOIN index_reports_json i ON i.report_date = b.report_date
+  - JOIN trimmings_am_reports_json t ON t.report_date = b.report_date
+
+Example inspection queries
+-- Overview counts since 2018
+SELECT 'boxed_am' AS tbl, COUNT(*) FROM boxed_am_reports_json
+UNION ALL SELECT 'boxed_pm', COUNT(*) FROM boxed_pm_reports_json
+UNION ALL SELECT 'catalog', COUNT(*) FROM catalog_reports_json
+UNION ALL SELECT 'index', COUNT(*) FROM index_reports_json
+UNION ALL SELECT 'trim_am', COUNT(*) FROM trimmings_am_reports_json
+UNION ALL SELECT 'trim_pm', COUNT(*) FROM trimmings_pm_reports_json;
+
+-- Bundle presence by date (AM only shown here)
+SELECT d::date AS report_date,
+       (SELECT COUNT(*) FROM boxed_am_reports_json b WHERE b.report_date = d)  AS boxed_am,
+       (SELECT COUNT(*) FROM catalog_reports_json c WHERE c.report_date = d)   AS catalog,
+       (SELECT COUNT(*) FROM index_reports_json i WHERE i.report_date = d)     AS index_report,
+       (SELECT COUNT(*) FROM trimmings_am_reports_json t WHERE t.report_date=d) AS trimmings_am
+FROM generate_series(
+       (SELECT COALESCE(MIN(report_date), CURRENT_DATE) FROM boxed_am_reports_json),
+       CURRENT_DATE,
+       interval '1 day'
+     ) AS d
+ORDER BY d;
+
+Notes & next steps
+- This document is the authoritative mapping for the simplified schema. The payload holds 100% of the JSON, so nothing is lost.
+- We can add DDL (SQL) to create these six tables and a daily linkage view on request.
+- Expression indexes can speed up lookups on common fields read from payload.
+

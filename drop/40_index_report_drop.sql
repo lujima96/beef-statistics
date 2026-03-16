@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS contact_websites CASCADE;
+DROP TABLE IF EXISTS contacts CASCADE;
+DROP TABLE IF EXISTS notes CASCADE;
+DROP TABLE IF EXISTS outlying_quality_values CASCADE;
+DROP TABLE IF EXISTS outlying_qualities CASCADE;
+DROP TABLE IF EXISTS outlying_weights CASCADE;
+DROP TABLE IF EXISTS outlying_carcass_types CASCADE;
+DROP TABLE IF EXISTS processing CASCADE;
+DROP TABLE IF EXISTS direct_cattle_prices CASCADE;
+DROP TABLE IF EXISTS boxed_cutout_inputs CASCADE;
+DROP TABLE IF EXISTS grading_breakdown CASCADE;
+DROP TABLE IF EXISTS supply_demand CASCADE;
+DROP TABLE IF EXISTS beef_carcass_index CASCADE;
+DROP TABLE IF EXISTS index_reports CASCADE;

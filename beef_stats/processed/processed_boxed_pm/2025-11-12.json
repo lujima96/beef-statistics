@@ -1,0 +1,529 @@
+{
+  "run": "PM",
+  "report_id": "LM_XB403",
+  "report_date": "2025-11-12",
+  "location": "",
+  "source": "USDA Livestock, Poultry and Grain Market News",
+  "sub_primal_negotiated_cut_prices": {
+    "choice": [
+      {
+        "imps": "109E",
+        "sub_primal": "Rib, ribeye, lip-on, bn-in",
+        "fat_limit": "1",
+        "weighted_average": 1271.68
+      },
+      {
+        "imps": "112A",
+        "sub_primal": "Rib, ribeye, bnls, light",
+        "fat_limit": "3",
+        "weighted_average": 1444.72
+      },
+      {
+        "imps": "112A",
+        "sub_primal": "Rib, ribeye, bnls, heavy",
+        "fat_limit": "3",
+        "weighted_average": 1371.94
+      },
+      {
+        "imps": "113C",
+        "sub_primal": "Chuck, semi-bnls, neck/off",
+        "fat_limit": "1",
+        "weighted_average": 378.04
+      },
+      {
+        "imps": "114",
+        "sub_primal": "Chuck, shoulder clod",
+        "fat_limit": "1",
+        "weighted_average": 363.9
+      },
+      {
+        "imps": "114A",
+        "sub_primal": "Chuck, shoulder clod, trmd",
+        "fat_limit": "3",
+        "weighted_average": 368.43
+      },
+      {
+        "imps": "114D",
+        "sub_primal": "Chuck, clod, top blade",
+        "fat_limit": "3",
+        "weighted_average": 522.47
+      },
+      {
+        "imps": "114E",
+        "sub_primal": "Chuck, clod, arm roast",
+        "fat_limit": "3",
+        "weighted_average": 531.27
+      },
+      {
+        "imps": "114F",
+        "sub_primal": "Chuck, clod tender",
+        "fat_limit": "5",
+        "weighted_average": 1081.17
+      },
+      {
+        "imps": "116A",
+        "sub_primal": "Chuck, roll, lxl, neck/off",
+        "fat_limit": "3",
+        "weighted_average": 435.03
+      },
+      {
+        "imps": "116B",
+        "sub_primal": "Chuck, chuck tender",
+        "fat_limit": "1",
+        "weighted_average": 441.95
+      },
+      {
+        "imps": "916A",
+        "sub_primal": "Chuck, roll, retail ready",
+        "fat_limit": "3",
+        "weighted_average": 484.82
+      },
+      {
+        "imps": "116G",
+        "sub_primal": "Chuck, flap",
+        "fat_limit": "4",
+        "weighted_average": 1092.72
+      },
+      {
+        "imps": "120",
+        "sub_primal": "Brisket, deckle-off, bnls",
+        "fat_limit": "1",
+        "weighted_average": 456.37
+      },
+      {
+        "imps": "120A",
+        "sub_primal": "Brisket, point/off, bnls",
+        "fat_limit": "3",
+        "weighted_average": 716.76
+      },
+      {
+        "imps": "123A",
+        "sub_primal": "Short Plate, short rib",
+        "fat_limit": "3",
+        "weighted_average": 545.25
+      },
+      {
+        "imps": "130",
+        "sub_primal": "Chuck, short rib",
+        "fat_limit": "4",
+        "weighted_average": 500.5
+      },
+      {
+        "imps": "160",
+        "sub_primal": "Round, bone-in",
+        "fat_limit": "1",
+        "weighted_average": 0.0
+      },
+      {
+        "imps": "161",
+        "sub_primal": "Round, boneless",
+        "fat_limit": "1",
+        "weighted_average": 0.0
+      },
+      {
+        "imps": "167A",
+        "sub_primal": "Round, knuckle, peeled",
+        "fat_limit": "4",
+        "weighted_average": 478.19
+      },
+      {
+        "imps": "168",
+        "sub_primal": "Round, top inside round",
+        "fat_limit": "1",
+        "weighted_average": 364.0
+      },
+      {
+        "imps": "168",
+        "sub_primal": "Round, top inside round",
+        "fat_limit": "3",
+        "weighted_average": 381.87
+      },
+      {
+        "imps": "169",
+        "sub_primal": "Round, top inside, denuded",
+        "fat_limit": "5",
+        "weighted_average": 436.57
+      },
+      {
+        "imps": "169A",
+        "sub_primal": "Round, top inside, cap off",
+        "fat_limit": "5",
+        "weighted_average": 481.35
+      },
+      {
+        "imps": "169A",
+        "sub_primal": "Round, top inside, side off",
+        "fat_limit": "3",
+        "weighted_average": null
+      },
+      {
+        "imps": "170",
+        "sub_primal": "Round, bottom gooseneck",
+        "fat_limit": "1",
+        "weighted_average": null
+      },
+      {
+        "imps": "171B",
+        "sub_primal": "Round, outside round",
+        "fat_limit": "3",
+        "weighted_average": 375.98
+      },
+      {
+        "imps": "171C",
+        "sub_primal": "Round, eye of round",
+        "fat_limit": "3",
+        "weighted_average": 480.39
+      },
+      {
+        "imps": "174",
+        "sub_primal": "Loin, short loin, 0x1",
+        "fat_limit": "3",
+        "weighted_average": 786.22
+      },
+      {
+        "imps": "175",
+        "sub_primal": "Loin, strip loin, 1x1",
+        "fat_limit": "3",
+        "weighted_average": null
+      },
+      {
+        "imps": "175",
+        "sub_primal": "Loin, strip loin bnls. 1x1",
+        "fat_limit": "1",
+        "weighted_average": 917.81
+      },
+      {
+        "imps": "180",
+        "sub_primal": "Loin, strip, bnls, 0x1",
+        "fat_limit": "3",
+        "weighted_average": 973.22
+      },
+      {
+        "imps": "184",
+        "sub_primal": "Loin, top butt, bnls, heavy",
+        "fat_limit": "1",
+        "weighted_average": 0.0
+      },
+      {
+        "imps": "184",
+        "sub_primal": "Loin, top butt, boneless",
+        "fat_limit": "3",
+        "weighted_average": 534.44
+      },
+      {
+        "imps": "184B",
+        "sub_primal": "Loin, top butt, CC",
+        "fat_limit": "3",
+        "weighted_average": 726.95
+      },
+      {
+        "imps": "185A",
+        "sub_primal": "Loin, bottom sirloin, flap",
+        "fat_limit": "4",
+        "weighted_average": 764.24
+      },
+      {
+        "imps": "185B",
+        "sub_primal": "Loin, ball-tip, bnls, heavy",
+        "fat_limit": "1",
+        "weighted_average": 395.06
+      },
+      {
+        "imps": "185C",
+        "sub_primal": "Loin, sirloin, tri-tip",
+        "fat_limit": "1",
+        "weighted_average": 446.75
+      },
+      {
+        "imps": "185D",
+        "sub_primal": "Loin, sirloin, tri-tip, pld",
+        "fat_limit": "4",
+        "weighted_average": 613.82
+      },
+      {
+        "imps": "189A",
+        "sub_primal": "Loin, tndrloin, trmd, heavy",
+        "fat_limit": "4",
+        "weighted_average": 2008.31
+      },
+      {
+        "imps": "191A",
+        "sub_primal": "Loin, butt tender, trimmed",
+        "fat_limit": "4",
+        "weighted_average": 1737.11
+      },
+      {
+        "imps": "193",
+        "sub_primal": "Flank, flank steak",
+        "fat_limit": "4",
+        "weighted_average": 680.52
+      }
+    ],
+    "select": [
+      {
+        "imps": "109E",
+        "sub_primal": "Rib, ribeye, lip-on, bn-in",
+        "fat_limit": "1",
+        "weighted_average": 1135.86
+      },
+      {
+        "imps": "112A",
+        "sub_primal": "Rib, ribeye, bnls, light",
+        "fat_limit": "3",
+        "weighted_average": 1266.73
+      },
+      {
+        "imps": "112A",
+        "sub_primal": "Rib, ribeye, bnls, heavy",
+        "fat_limit": "3",
+        "weighted_average": 1243.45
+      },
+      {
+        "imps": "113C",
+        "sub_primal": "Chuck, semi-bnls, neck/off",
+        "fat_limit": "1",
+        "weighted_average": null
+      },
+      {
+        "imps": "114",
+        "sub_primal": "Chuck, shoulder clod",
+        "fat_limit": "1",
+        "weighted_average": 356.4
+      },
+      {
+        "imps": "114A",
+        "sub_primal": "Chuck, shoulder clod, trmd",
+        "fat_limit": "3",
+        "weighted_average": 386.28
+      },
+      {
+        "imps": "114D",
+        "sub_primal": "Chuck, clod, top blade",
+        "fat_limit": "3",
+        "weighted_average": 0.0
+      },
+      {
+        "imps": "114E",
+        "sub_primal": "Chuck, clod, arm roast",
+        "fat_limit": "3",
+        "weighted_average": 0.0
+      },
+      {
+        "imps": "114F",
+        "sub_primal": "Chuck, clod tender",
+        "fat_limit": "5",
+        "weighted_average": 996.57
+      },
+      {
+        "imps": "116A",
+        "sub_primal": "Chuck, roll, lxl, neck/off",
+        "fat_limit": "3",
+        "weighted_average": 438.03
+      },
+      {
+        "imps": "116B",
+        "sub_primal": "Chuck, chuck tender",
+        "fat_limit": "1",
+        "weighted_average": 444.39
+      },
+      {
+        "imps": "916A",
+        "sub_primal": "Chuck, roll, retail ready",
+        "fat_limit": "3",
+        "weighted_average": null
+      },
+      {
+        "imps": "116G",
+        "sub_primal": "Chuck, flap",
+        "fat_limit": "4",
+        "weighted_average": 985.07
+      },
+      {
+        "imps": "120",
+        "sub_primal": "Brisket, deckle-off, bnls",
+        "fat_limit": "1",
+        "weighted_average": 441.16
+      },
+      {
+        "imps": "120A",
+        "sub_primal": "Brisket, point/off, bnls",
+        "fat_limit": "3",
+        "weighted_average": 0.0
+      },
+      {
+        "imps": "123A",
+        "sub_primal": "Short Plate, short rib",
+        "fat_limit": "3",
+        "weighted_average": 564.79
+      },
+      {
+        "imps": "130",
+        "sub_primal": "Chuck, short rib",
+        "fat_limit": "4",
+        "weighted_average": 509.49
+      },
+      {
+        "imps": "160",
+        "sub_primal": "Round, bone-in",
+        "fat_limit": "1",
+        "weighted_average": null
+      },
+      {
+        "imps": "161",
+        "sub_primal": "Round, boneless",
+        "fat_limit": "1",
+        "weighted_average": 0.0
+      },
+      {
+        "imps": "167A",
+        "sub_primal": "Round, knuckle, peeled",
+        "fat_limit": "4",
+        "weighted_average": 0.0
+      },
+      {
+        "imps": "168",
+        "sub_primal": "Round, top inside round",
+        "fat_limit": "1",
+        "weighted_average": 0.0
+      },
+      {
+        "imps": "168",
+        "sub_primal": "Round, top inside round",
+        "fat_limit": "3",
+        "weighted_average": 389.73
+      },
+      {
+        "imps": "169",
+        "sub_primal": "Round, top inside, denuded",
+        "fat_limit": "5",
+        "weighted_average": null
+      },
+      {
+        "imps": "169A",
+        "sub_primal": "Round, top inside, cap off",
+        "fat_limit": "5",
+        "weighted_average": 503.1
+      },
+      {
+        "imps": "169A",
+        "sub_primal": "Round, top inside, side off",
+        "fat_limit": "3",
+        "weighted_average": 0.0
+      },
+      {
+        "imps": "170",
+        "sub_primal": "Round, bottom gooseneck",
+        "fat_limit": "1",
+        "weighted_average": 0.0
+      },
+      {
+        "imps": "171B",
+        "sub_primal": "Round, outside round",
+        "fat_limit": "3",
+        "weighted_average": 392.85
+      },
+      {
+        "imps": "171C",
+        "sub_primal": "Round, eye of round",
+        "fat_limit": "3",
+        "weighted_average": 480.18
+      },
+      {
+        "imps": "174",
+        "sub_primal": "Loin, short loin, 0x1",
+        "fat_limit": "3",
+        "weighted_average": 734.86
+      },
+      {
+        "imps": "175",
+        "sub_primal": "Loin, strip loin, 1x1",
+        "fat_limit": "3",
+        "weighted_average": 0.0
+      },
+      {
+        "imps": "175",
+        "sub_primal": "Loin, strip loin bnls. 1x1",
+        "fat_limit": "1",
+        "weighted_average": 0.0
+      },
+      {
+        "imps": "180",
+        "sub_primal": "Loin, strip, bnls, 0x1",
+        "fat_limit": "3",
+        "weighted_average": 734.15
+      },
+      {
+        "imps": "184",
+        "sub_primal": "Loin, top butt, bnls, heavy",
+        "fat_limit": "1",
+        "weighted_average": 0.0
+      },
+      {
+        "imps": "184",
+        "sub_primal": "Loin, top butt, boneless",
+        "fat_limit": "3",
+        "weighted_average": 505.22
+      },
+      {
+        "imps": "184B",
+        "sub_primal": "Loin, top butt, CC",
+        "fat_limit": "3",
+        "weighted_average": 0.0
+      },
+      {
+        "imps": "185A",
+        "sub_primal": "Loin, bottom sirloin, flap",
+        "fat_limit": "4",
+        "weighted_average": 669.21
+      },
+      {
+        "imps": "185B",
+        "sub_primal": "Loin, ball-tip, bnls, heavy",
+        "fat_limit": "1",
+        "weighted_average": 423.1
+      },
+      {
+        "imps": "185C",
+        "sub_primal": "Loin, sirloin, tri-tip",
+        "fat_limit": "1",
+        "weighted_average": 429.83
+      },
+      {
+        "imps": "185D",
+        "sub_primal": "Loin, sirloin, tri-tip, pld",
+        "fat_limit": "4",
+        "weighted_average": null
+      },
+      {
+        "imps": "189A",
+        "sub_primal": "Loin, tndrloin, trmd, heavy",
+        "fat_limit": "4",
+        "weighted_average": 1794.14
+      },
+      {
+        "imps": "191A",
+        "sub_primal": "Loin, butt tender, trimmed",
+        "fat_limit": "4",
+        "weighted_average": null
+      },
+      {
+        "imps": "193",
+        "sub_primal": "Flank, flank steak",
+        "fat_limit": "4",
+        "weighted_average": 676.06
+      }
+    ],
+    "mixed": []
+  },
+  "ground_beef_items": [
+    {
+      "label": "Page 4 of 5",
+      "percent": null,
+      "trades": 0,
+      "pounds": 0,
+      "low": null,
+      "high": null,
+      "weighted_average": null
+    }
+  ]
+}

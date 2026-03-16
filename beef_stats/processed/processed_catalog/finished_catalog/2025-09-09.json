@@ -1,0 +1,112 @@
+{
+  "report": {
+    "report_code": "AMS_2453/LM_XB403",
+    "report_name": "National Daily Cattle & Beef Summary",
+    "report_date": "2025-09-09",
+    "location": "Des Moines, Iowa"
+  },
+  "daily_estimated_cutout_values": {
+    "weight_range": "600-900#",
+    "choice_cutout": 407.67,
+    "select_cutout": 386.96,
+    "choice_select_spread": 20.71,
+    "choice_change": 2.02,
+    "select_change": 1.62,
+    "primals": [],
+    "loads": {
+      "total": 156,
+      "choice": 95,
+      "select": 36,
+      "trimmings": 6,
+      "grinds": 19
+    },
+    "fresh_50pct_trimmings": {
+      "loads": 6,
+      "price": 157.67
+    }
+  },
+  "byproduct_drop_value": {
+    "change": "unchanged"
+  },
+  "five_area_weekly_avg_cattle_price": {
+    "report_code": "AMS_2460/LM_CT100",
+    "as_of_time": "10:00 am",
+    "categories": [
+      {
+        "type": "Live Heifer",
+        "head_count": 850,
+        "avg_weight": null,
+        "avg_price": null
+      },
+      {
+        "type": "Dressed Heifer",
+        "head_count": 2025,
+        "avg_weight": 2024,
+        "avg_price": 2023.0
+      }
+    ]
+  },
+  "estimated_daily_cattle_slaughter": {
+    "report_code": "AMS 3208/SJ_LS710",
+    "today": 118000,
+    "week_ago": 120000,
+    "year_ago_actual": 126796,
+    "week_to_date": 224000,
+    "same_period_last_week": 122000,
+    "same_period_last_year": 241111,
+    "previous_day_estimated": {
+      "steer_and_heifer": {
+        "friday": null,
+        "saturday": null
+      },
+      "cow_and_bull": {
+        "friday": null,
+        "saturday": null
+      }
+    }
+  },
+  "beef_production": {
+    "report_code": null,
+    "week_end_date": null,
+    "this_week_estimate": {
+      "slaughter": 487000,
+      "live_weights": 1415,
+      "dressed_weights": 868,
+      "production_million_lbs": 422
+    },
+    "last_week_estimate": {
+      "slaughter": 565000,
+      "live_weights": 1415,
+      "dressed_weights": 866,
+      "production_million_lbs": 488
+    },
+    "last_year_actual": {
+      "slaughter": 548000,
+      "live_weights": 1409,
+      "dressed_weights": 860,
+      "production_million_lbs": 470
+    }
+  },
+  "beef_carcass_price_equivalent_index": {
+    "report_code": "AMS_2825/NW_LS410",
+    "choice": {
+      "weight_range": "600-900#",
+      "value": 383.25,
+      "change": -1.36
+    },
+    "select": {
+      "weight_range": "600-900#",
+      "value": 360.54,
+      "change": 0.46
+    },
+    "dressing_percent": {
+      "steer": 63.62,
+      "heifer": 63.45
+    }
+  },
+  "national_cutter_cow_carcass_cutout": {
+    "report_code": "AMS_2455/LM_XB405"
+  },
+  "cme_live_cattle": {},
+  "cme_feeder_cattle": {}
+}

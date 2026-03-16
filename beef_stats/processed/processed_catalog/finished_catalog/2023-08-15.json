@@ -1,0 +1,183 @@
+{
+  "report": {
+    "report_code": "AMS_2453/LM_XB403",
+    "report_name": "National Daily Cattle & Beef Summary",
+    "report_date": "2023-08-15",
+    "location": "Des Moines, Iowa"
+  },
+  "daily_estimated_cutout_values": {
+    "weight_range": "600-900#",
+    "choice_cutout": 307.26,
+    "select_cutout": 283.03,
+    "choice_select_spread": 24.23,
+    "primals": [
+      {
+        "primal": "Rib",
+        "choice": 480.51,
+        "select": 401.94
+      },
+      {
+        "primal": "Chuck",
+        "choice": 253.66,
+        "select": 251.39
+      },
+      {
+        "primal": "Round",
+        "choice": 253.47,
+        "select": 251.22
+      },
+      {
+        "primal": "Loin",
+        "choice": 402.27,
+        "select": 344.05
+      },
+      {
+        "primal": "Brisket",
+        "choice": 261.63,
+        "select": 236.9
+      },
+      {
+        "primal": "Short Plate",
+        "choice": 217.9,
+        "select": 217.9
+      },
+      {
+        "primal": "Flank",
+        "choice": 203.95,
+        "select": 189.0
+      }
+    ],
+    "loads": {
+      "total": 147,
+      "choice": 80,
+      "select": 600,
+      "trimmings": 30,
+      "grinds": 16
+    },
+    "fresh_50pct_trimmings": {
+      "loads": 30,
+      "price": 140.97
+    }
+  },
+  "byproduct_drop_value": {
+    "report_code": "AMS 2829/NW_LS441",
+    "value": 13.57,
+    "change": 0.01
+  },
+  "five_area_weekly_avg_cattle_price": {
+    "report_code": "AMS_2460/LM_CT100",
+    "as_of_time": "10:00 am",
+    "categories": [
+      {
+        "type": "Live Steer",
+        "head_count": 2960,
+        "avg_weight": 1514,
+        "avg_price": 188.0
+      },
+      {
+        "type": "Live Heifer",
+        "head_count": 0,
+        "avg_weight": null,
+        "avg_price": null
+      }
+    ]
+  },
+  "estimated_daily_cattle_slaughter": {
+    "report_code": null,
+    "today": 125000,
+    "week_ago": 124000,
+    "year_ago_actual": 127000,
+    "week_to_date": 244000,
+    "same_period_last_week": 247000,
+    "same_period_last_year": 248000,
+    "previous_day_estimated": {
+      "steer_and_heifer": 94000,
+      "cow_and_bull": 25000
+    }
+  },
+  "beef_production": {
+    "report_code": "AMS_3209/SJ_LS712",
+    "week_end_date": "2023-08-12",
+    "this_week_estimate": {
+      "slaughter": 603000,
+      "live_weights": 1345,
+      "dressed_weights": 814,
+      "production_million_lbs": 490.1
+    },
+    "last_week_estimate": {
+      "slaughter": 613000,
+      "live_weights": 1345,
+      "dressed_weights": 815,
+      "production_million_lbs": 498.5
+    },
+    "last_year_actual": {
+      "slaughter": 645000,
+      "live_weights": 1350,
+      "dressed_weights": 819,
+      "production_million_lbs": 527.3
+    }
+  },
+  "beef_carcass_price_equivalent_index": {
+    "report_code": "AMS_2825/NW_LS410",
+    "choice": {
+      "weight_range": "600-900#",
+      "value": 288.24,
+      "change": 0.95
+    },
+    "select": {
+      "weight_range": "600-900#",
+      "value": 264.1,
+      "change": 1.37
+    },
+    "dressing_percent": {
+      "steer": 63.1,
+      "heifer": 62.98
+    }
+  },
+  "national_cutter_cow_carcass_cutout": {
+    "report_code": "AMS_2455/LM_XB405",
+    "value": 236.87,
+    "change": -1.04,
+    "lean_90pct": 299.74
+  },
+  "cme_live_cattle": {
+    "aug": {
+      "high": 180.03,
+      "low": 178.98,
+      "change": -0.65,
+      "close": 179.1
+    },
+    "oct": {
+      "high": 181.1,
+      "low": 179.63,
+      "change": -0.7,
+      "close": 179.98
+    },
+    "dec": {
+      "high": 185.28,
+      "low": 183.8,
+      "change": -0.8,
+      "close": 184.18
+    }
+  },
+  "cme_feeder_cattle": {
+    "aug": {
+      "high": 246.98,
+      "low": 245.1,
+      "change": -0.35,
+      "settle": 245.88
+    },
+    "sep": {
+      "high": 251.08,
+      "low": 248.73,
+      "change": -0.35,
+      "settle": 249.78
+    },
+    "oct": {
+      "high": 252.83,
+      "low": 250.58,
+      "change": -0.3,
+      "settle": 251.55
+    }
+  }
+}

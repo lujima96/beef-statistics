@@ -1,0 +1,201 @@
+{
+  "report": {
+    "report_code": "AMS_2453/LM_XB403",
+    "report_name": "National Daily Cattle & Beef Summary",
+    "report_date": "2021-07-12",
+    "location": "Des Moines, Iowa"
+  },
+  "daily_estimated_cutout_values": {
+    "weight_range": "600-900#",
+    "choice_cutout": 275.0,
+    "select_cutout": 258.77,
+    "choice_select_spread": 16.23,
+    "primals": [
+      {
+        "primal": "Rib",
+        "choice": 385.28,
+        "select": 336.52
+      },
+      {
+        "primal": "Chuck",
+        "choice": 230.28,
+        "select": 225.64
+      },
+      {
+        "primal": "Round",
+        "choice": 232.22,
+        "select": 228.86
+      },
+      {
+        "primal": "Loin",
+        "choice": 368.63,
+        "select": 326.73
+      },
+      {
+        "primal": "Brisket",
+        "choice": 210.08,
+        "select": 213.16
+      },
+      {
+        "primal": "Short Plate",
+        "choice": 244.63,
+        "select": 244.63
+      },
+      {
+        "primal": "Flank",
+        "choice": 146.36,
+        "select": 152.45
+      }
+    ],
+    "loads": {
+      "total": 123,
+      "choice": 84,
+      "select": 17,
+      "trimmings": 13,
+      "grinds": 10
+    },
+    "fresh_50pct_trimmings": {
+      "loads": 13,
+      "price": 120.7
+    }
+  },
+  "byproduct_drop_value": {
+    "report_code": "AMS 2829/NW_LS441",
+    "value": 12.86,
+    "change": 0.03
+  },
+  "five_area_weekly_avg_cattle_price": {
+    "report_code": "AMS_2460/LM_CT100",
+    "as_of_time": "10:00 am",
+    "categories": [
+      {
+        "type": "Live Steer",
+        "head_count": 26595,
+        "avg_weight": 1437,
+        "avg_price": 122.16
+      },
+      {
+        "type": "Live Heifer",
+        "head_count": 11042,
+        "avg_weight": 1265,
+        "avg_price": 120.48
+      },
+      {
+        "type": "Dressed Steer",
+        "head_count": 16836,
+        "avg_weight": 928,
+        "avg_price": 198.33
+      },
+      {
+        "type": "Dressed Heifer",
+        "head_count": 3269,
+        "avg_weight": 825,
+        "avg_price": 198.31
+      }
+    ]
+  },
+  "estimated_daily_cattle_slaughter": {
+    "report_code": "AMS 3208/SJ_LS710",
+    "today": 120000,
+    "week_ago": 8000,
+    "year_ago_actual": 115000,
+    "week_to_date": null,
+    "same_period_last_week": null,
+    "same_period_last_year": null,
+    "previous_day_estimated": {
+      "steer_and_heifer": {
+        "friday": 95000,
+        "saturday": 72000
+      },
+      "cow_and_bull": {
+        "friday": 25000,
+        "saturday": 16000
+      }
+    }
+  },
+  "beef_production": {
+    "report_code": "AMS_3209/SJ_LS712",
+    "week_end_date": "2021-07-10",
+    "this_week_estimate": {
+      "slaughter": 582000,
+      "live_weights": 1347,
+      "dressed_weights": 815,
+      "production_million_lbs": 473.6
+    },
+    "last_week_estimate": {
+      "slaughter": 623000,
+      "live_weights": 1351,
+      "dressed_weights": 818,
+      "production_million_lbs": 508.3
+    },
+    "last_year_actual": {
+      "slaughter": 649000,
+      "live_weights": 1372,
+      "dressed_weights": 838,
+      "production_million_lbs": 542.4
+    }
+  },
+  "beef_carcass_price_equivalent_index": {
+    "report_code": "AMS_2825/NW_LS410",
+    "choice": {
+      "weight_range": "600-900#",
+      "value": 222.38,
+      "change": -2.16
+    },
+    "select": {
+      "weight_range": "600-900#",
+      "value": 203.43,
+      "change": 2.44
+    },
+    "dressing_percent": {
+      "steer": 63.38,
+      "heifer": 63.37
+    }
+  },
+  "national_cutter_cow_carcass_cutout": {
+    "report_code": "AMS_2455/LM_XB405",
+    "value": 229.97,
+    "change": -0.27,
+    "lean_90pct": 281.36
+  },
+  "cme_live_cattle": {
+    "aug": {
+      "high": 120.35,
+      "low": 119.0,
+      "change": 0.6,
+      "close": 119.83
+    },
+    "oct": {
+      "high": 126.13,
+      "low": 125.03,
+      "change": 0.23,
+      "close": 125.8
+    },
+    "dec": {
+      "high": 131.5,
+      "low": 130.48,
+      "change": 0.48,
+      "close": 131.38
+    }
+  },
+  "cme_feeder_cattle": {
+    "aug": {
+      "high": 159.15,
+      "low": 157.6,
+      "change": 1.03,
+      "settle": 158.15
+    },
+    "sep": {
+      "high": 161.85,
+      "low": 160.4,
+      "change": 0.83,
+      "settle": 161.0
+    },
+    "oct": {
+      "high": 163.83,
+      "low": 162.4,
+      "change": 0.75,
+      "settle": 162.95
+    }
+  }
+}

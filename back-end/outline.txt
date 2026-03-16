@@ -1,0 +1,43 @@
+Database Outline — Simplified (One Table per JSON Category)
+==========================================================
+
+Goal: radically simplify the schema. Each JSON category maps to a single table that stores the entire JSON payload (no more multi‑table fan‑out). Minimal convenience columns are kept for easy lookups. Inefficiency is acceptable; clarity wins.
+
+Common pattern for all tables
+- id BIGSERIAL PRIMARY KEY
+- report_date DATE NULL (when available in JSON)
+- run run_enum NULL (AM/PM, when applicable)
+- report_id TEXT NULL or report_code TEXT NULL (depending on feed)
+- source_file TEXT NULL (optional, filename ingested)
+- payload JSONB NOT NULL (verbatim JSON for the record)
+- created_at TIMESTAMPTZ DEFAULT now()
+
+Tables (1:1 with processed JSON folders)
+1. boxed_am_reports_json
+   - Keys: (report_id?, report_date, run='AM') with optional uniqueness by (report_id, report_date, run)
+   - Stores JSON from processed_boxed_am/*.json in payload
+
+2. boxed_pm_reports_json
+   - Keys: (report_id?, report_date, run='PM')
+   - Stores JSON from processed_boxed_pm/*.json
+
+3. catalog_reports_json
+   - Keys: (report_code?, report_date)
+   - Stores merged/individual JSON from processed_catalog/*/*.json
+
+4. index_reports_json
+   - Keys: (report_id?, report_date)
+   - Stores JSON from processed_index/*.json
+
+5. trimmings_am_reports_json
+   - Keys: (report_code?, report_date, run='AM')
+   - Stores JSON from processed_trimmings_am/*.json
+
+6. trimmings_pm_reports_json
+   - Keys: (report_code?, report_date, run='PM')
+   - Stores JSON from processed_trimmings_pm/*.json
+
+Notes
+- We intentionally avoid breaking JSON into child tables. All nested sections remain inside payload.
+- We can still index common fields using expression indexes on payload (e.g., (payload->>'total_load_count')).
+- Existing detailed schema can be kept side‑by‑side if needed; these new tables are the “landing zone” and source of truth for analytics.

@@ -1,0 +1,35 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 11em;
+}
+
+button.entry div {
+    margin-bottom: 2px;
+    padding-right: 8px;
+}
+
+.entry {
+    display: flex;
+    align-items: center;
+
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    outline: inherit;
+    font-size: 16px;
+    padding: 0.15em 0.8em;
+}
+
+.entry:hover {
+    background-color: #ececec;
+}
+
+.entry:active {
+    background-color: #c6c6c6;
+}
+
+.entry:disabled {
+    color: lightgray;
+}

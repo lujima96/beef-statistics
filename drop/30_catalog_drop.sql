@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS beef_production_estimates CASCADE;
+DROP TABLE IF EXISTS beef_production CASCADE;
+DROP TABLE IF EXISTS estimated_daily_cattle_slaughter CASCADE;
+DROP TABLE IF EXISTS five_area_price_categories CASCADE;
+DROP TABLE IF EXISTS five_area_weekly_avg_cattle_price CASCADE;
+DROP TABLE IF EXISTS byproduct_drop_value CASCADE;
+DROP TABLE IF EXISTS daily_cutout_loads CASCADE;
+DROP TABLE IF EXISTS daily_cutout_primals CASCADE;
+DROP TABLE IF EXISTS daily_cutout CASCADE;
+DROP TABLE IF EXISTS catalog_reports CASCADE;

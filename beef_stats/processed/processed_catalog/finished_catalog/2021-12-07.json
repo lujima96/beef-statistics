@@ -1,0 +1,183 @@
+{
+  "report": {
+    "report_code": "AMS_2453/LM_XB403",
+    "report_name": "National Daily Cattle & Beef Summary",
+    "report_date": "2021-12-07",
+    "location": "Des Moines, Iowa"
+  },
+  "daily_estimated_cutout_values": {
+    "weight_range": "600-900#",
+    "choice_cutout": 268.03,
+    "select_cutout": 255.68,
+    "choice_select_spread": 12.35,
+    "primals": [
+      {
+        "primal": "Rib",
+        "choice": 451.61,
+        "select": 398.73
+      },
+      {
+        "primal": "Chuck",
+        "choice": 219.77,
+        "select": 216.0
+      },
+      {
+        "primal": "Round",
+        "choice": 217.96,
+        "select": 219.54
+      },
+      {
+        "primal": "Loin",
+        "choice": 332.53,
+        "select": 305.7
+      },
+      {
+        "primal": "Brisket",
+        "choice": 287.33,
+        "select": 289.76
+      },
+      {
+        "primal": "Short Plate",
+        "choice": 184.12,
+        "select": 184.12
+      },
+      {
+        "primal": "Flank",
+        "choice": 143.51,
+        "select": 144.27
+      }
+    ],
+    "loads": {
+      "total": 159,
+      "choice": 84,
+      "select": 36,
+      "trimmings": 12,
+      "grinds": 27
+    },
+    "fresh_50pct_trimmings": {
+      "loads": 12,
+      "price": 104.53
+    }
+  },
+  "byproduct_drop_value": {
+    "report_code": "AMS 2829/NW_LS441",
+    "value": 14.24,
+    "change": "unchanged"
+  },
+  "five_area_weekly_avg_cattle_price": {
+    "report_code": "AMS_2460/LM_CT100",
+    "as_of_time": "10:00 am",
+    "categories": [
+      {
+        "type": "Live Steer",
+        "head_count": 589,
+        "avg_weight": 1574,
+        "avg_price": 140.0
+      },
+      {
+        "type": "Live Heifer",
+        "head_count": 0,
+        "avg_weight": null,
+        "avg_price": null
+      }
+    ]
+  },
+  "estimated_daily_cattle_slaughter": {
+    "report_code": "AMS 3208/SJ_LS710",
+    "today": 123000,
+    "week_ago": 122000,
+    "year_ago_actual": 116000,
+    "week_to_date": 245000,
+    "same_period_last_week": 243000,
+    "same_period_last_year": 235000,
+    "previous_day_estimated": {
+      "steer_and_heifer": 96000,
+      "cow_and_bull": 26000
+    }
+  },
+  "beef_production": {
+    "report_code": "AMS_3209/SJ_LS712",
+    "week_end_date": "2021-12-04",
+    "this_week_estimate": {
+      "slaughter": 676000,
+      "live_weights": 1381,
+      "dressed_weights": 834,
+      "production_million_lbs": 562.5
+    },
+    "last_week_estimate": {
+      "slaughter": 566000,
+      "live_weights": 1380,
+      "dressed_weights": 833,
+      "production_million_lbs": 470.5
+    },
+    "last_year_actual": {
+      "slaughter": 669000,
+      "live_weights": 1394,
+      "dressed_weights": 841,
+      "production_million_lbs": 561.6
+    }
+  },
+  "beef_carcass_price_equivalent_index": {
+    "report_code": "AMS_2825/NW_LS410",
+    "choice": {
+      "weight_range": "600-900#",
+      "value": 230.85,
+      "change": -2.25
+    },
+    "select": {
+      "weight_range": "600-900#",
+      "value": 216.29,
+      "change": -1.09
+    },
+    "dressing_percent": {
+      "steer": 62.73,
+      "heifer": 62.77
+    }
+  },
+  "national_cutter_cow_carcass_cutout": {
+    "report_code": "AMS_2455/LM_XB405",
+    "value": 228.77,
+    "change": -1.46,
+    "lean_90pct": 274.57
+  },
+  "cme_live_cattle": {
+    "dec": {
+      "high": 138.6,
+      "low": 137.95,
+      "change": 0.05,
+      "close": 138.23
+    },
+    "feb": {
+      "high": 139.75,
+      "low": 138.83,
+      "change": -0.43,
+      "close": 139.23
+    },
+    "apr": {
+      "high": 142.95,
+      "low": 142.18,
+      "change": -0.43,
+      "close": 142.45
+    }
+  },
+  "cme_feeder_cattle": {
+    "jan": {
+      "high": 165.7,
+      "low": 164.25,
+      "change": 0.23,
+      "settle": 165.03
+    },
+    "mar": {
+      "high": 168.18,
+      "low": 166.8,
+      "change": 0.48,
+      "settle": 167.48
+    },
+    "apr": {
+      "high": 170.8,
+      "low": 169.63,
+      "change": 0.53,
+      "settle": 170.2
+    }
+  }
+}

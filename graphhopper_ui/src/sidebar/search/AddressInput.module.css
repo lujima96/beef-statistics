@@ -1,0 +1,101 @@
+.btnInputClear {
+    display: none;
+    padding: 0 5px;
+    color: grey;
+    scale: 0.7;
+}
+
+.btnCurrentLocation {
+    padding: 0 7px 0 5px;
+    color: grey;
+    width: 32px;
+}
+
+.btnCurrentLocation > svg {
+    height: 100%;
+    width: 100%;
+}
+
+.btnClose {
+    display: none;
+}
+
+.inputContainer {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    grid-gap: 0;
+
+    box-sizing: border-box;
+    border: 1px solid #5b616a;
+    border-radius: 0.2rem;
+    /* for the radius we need some padding otherwise the corners will be nearly hidden */
+    padding: 1px;
+}
+
+.input {
+    border: none;
+    padding: 0.25rem 0.5rem;
+    font-size: 1.05rem;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.smallList {
+    grid-column: 2 / 3;
+    overflow-x: hidden;
+}
+
+@media (max-width: 44rem) {
+    .fullscreen {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: white;
+        z-index: 5;
+        padding: 0.5rem;
+    }
+
+    .fullscreen .inputContainer {
+        grid-template-columns: auto 1fr auto;
+    }
+
+    .fullscreen .btnClose {
+        display: block;
+        margin: 0;
+        padding: 5px 15px 5px 5px;
+    }
+
+    .fullscreen .btnInputClear {
+        display: block;
+    }
+    /* when showing btnInputClear => remove the padding */
+    .fullscreen .input {
+        padding-right: 0;
+    }
+}
+
+@media not all and (max-width: 44rem) {
+    .inputContainer:hover .btnInputClear {
+        display: block;
+    }
+    /* when showing btnInputClear => remove the padding */
+    .inputContainer:hover .input {
+        padding-right: 0;
+    }
+}
+
+.topBorder {
+    padding-top: 3px;
+    margin-top: -5px;
+    border-top: dashed grey 2px;
+}
+
+.bottomBorder {
+    padding-bottom: 3px;
+    margin-bottom: -5px;
+    border-bottom: dashed grey 2px;
+}

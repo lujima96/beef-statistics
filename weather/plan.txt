@@ -1,0 +1,62 @@
+## Plan to Obtain National Daily Average Temperature
+
+**Objective:** Obtain the national daily average temperature for the 48 contiguous US states from 2018 to the present.
+
+**API Token:** FXaGRRuyuLgsBXYEYMMxQqJjBNSYfKql
+
+---
+
+### Step 1: Get Location IDs for all 48 Contiguous States
+
+1.  Make a GET request to the following URL to fetch all states:
+    ```
+    https://www.ncei.noaa.gov/cdo-web/api/v2/locations?locationcategoryid=ST&limit=52
+    ```
+    *Header: `token: FXaGRRuyuLgsBXYEYMMxQqJjBNSYfKql`*
+
+2.  From the JSON response, extract the `id` and `name` for each state.
+
+3.  Filter this list to exclude Alaska and Hawaii, resulting in a list of the 48 contiguous states and their location IDs.
+
+---
+
+### Step 2: Identify Dataset and Data Type
+
+*   **Dataset:** Use the `GHCND` (Daily Summaries) dataset for daily resolution data.
+*   **Data Type:** Use the `TAVG` (Average Temperature) data type.
+
+---
+
+### Step 3: Fetch Temperature Data
+
+This process must be executed programmatically.
+
+1.  Loop through each of the 48 state location IDs obtained in Step 1.
+
+2.  For each state, loop through each year from 2018 to the present.
+
+3.  Construct the API request URL as follows:
+    ```
+    https://www.ncei.noaa.gov/cdo-web/api/v2/data?datasetid=GHCND&datatypeid=TAVG&locationid={STATE_ID}&startdate={YEAR}-01-01&enddate={YEAR}-12-31&limit=1000
+    ```
+    *Replace `{STATE_ID}` and `{YEAR}` accordingly.*
+
+4.  **Rate Limiting:** To comply with the API limit of 5 requests per second, introduce a delay of at least 200 milliseconds between each API call.
+
+5.  Store the returned temperature data, organized by date and state.
+
+---
+
+### Step 4: Aggregate the Data
+
+1.  After collecting all the data, group the temperature readings by date.
+
+2.  For each date, calculate the average temperature for each state by averaging the values from all stations within that state.
+
+3.  Calculate the national daily average by averaging the 48 state averages for that day.
+
+---
+
+### Step 5: Save the Final Results
+
+Save the aggregated data, containing the daily national average temperatures from 2018 to the present, into a CSV file named `national_daily_average_temp.csv`. The file should have two columns: `date` and `average_temperature`.

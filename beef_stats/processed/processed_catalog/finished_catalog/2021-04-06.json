@@ -1,0 +1,183 @@
+{
+  "report": {
+    "report_code": "AMS_2453/LM_XB403",
+    "report_name": "National Daily Cattle & Beef Summary",
+    "report_date": "2021-04-06",
+    "location": "Des Moines, Iowa"
+  },
+  "daily_estimated_cutout_values": {
+    "weight_range": "600-900#",
+    "choice_cutout": 262.77,
+    "select_cutout": 251.3,
+    "choice_select_spread": 11.47,
+    "primals": [
+      {
+        "primal": "Rib",
+        "choice": 444.26,
+        "select": 403.17
+      },
+      {
+        "primal": "Chuck",
+        "choice": 200.7,
+        "select": 193.75
+      },
+      {
+        "primal": "Round",
+        "choice": 195.78,
+        "select": 194.94
+      },
+      {
+        "primal": "Loin",
+        "choice": 382.27,
+        "select": 361.73
+      },
+      {
+        "primal": "Brisket",
+        "choice": 222.95,
+        "select": 218.72
+      },
+      {
+        "primal": "Short Plate",
+        "choice": 174.68,
+        "select": 174.68
+      },
+      {
+        "primal": "Flank",
+        "choice": 127.56,
+        "select": 128.42
+      }
+    ],
+    "loads": {
+      "total": 124,
+      "choice": 65,
+      "select": 19,
+      "trimmings": 24,
+      "grinds": 16
+    },
+    "fresh_50pct_trimmings": {
+      "loads": 24,
+      "price": 81.57
+    }
+  },
+  "byproduct_drop_value": {
+    "report_code": "AMS 2829/NW_LS441",
+    "value": 10.52,
+    "change": "unchanged"
+  },
+  "five_area_weekly_avg_cattle_price": {
+    "report_code": "AMS_2460/LM_CT100",
+    "as_of_time": "10:00 am",
+    "categories": [
+      {
+        "type": "Live Steer",
+        "head_count": 0,
+        "avg_weight": null,
+        "avg_price": null
+      },
+      {
+        "type": "Dressed Heifer",
+        "head_count": 0,
+        "avg_weight": null,
+        "avg_price": null
+      }
+    ]
+  },
+  "estimated_daily_cattle_slaughter": {
+    "report_code": "AMS 3208/SJ_LS710",
+    "today": 120000,
+    "week_ago": 120000,
+    "year_ago_actual": 105000,
+    "week_to_date": 225000,
+    "same_period_last_week": 239000,
+    "same_period_last_year": 212000,
+    "previous_day_estimated": {
+      "steer_and_heifer": 94000,
+      "cow_and_bull": 11000
+    }
+  },
+  "beef_production": {
+    "report_code": "AMS_3209/SJ_LS712",
+    "week_end_date": "2021-04-03",
+    "this_week_estimate": {
+      "slaughter": 609000,
+      "live_weights": 1377,
+      "dressed_weights": 831,
+      "production_million_lbs": 504.7
+    },
+    "last_week_estimate": {
+      "slaughter": 649000,
+      "live_weights": 1378,
+      "dressed_weights": 830,
+      "production_million_lbs": 537
+    },
+    "last_year_actual": {
+      "slaughter": 631000,
+      "live_weights": 1356,
+      "dressed_weights": 822,
+      "production_million_lbs": 518
+    }
+  },
+  "beef_carcass_price_equivalent_index": {
+    "report_code": "AMS_2825/NW_LS410",
+    "choice": {
+      "weight_range": "600-900#",
+      "value": 212.78,
+      "change": 2.07
+    },
+    "select": {
+      "weight_range": "600-900#",
+      "value": 201.22,
+      "change": 0.73
+    },
+    "dressing_percent": {
+      "steer": 63.98,
+      "heifer": 63.97
+    }
+  },
+  "national_cutter_cow_carcass_cutout": {
+    "report_code": "AMS_2455/LM_XB405",
+    "value": 190.41,
+    "change": 0.64,
+    "lean_90pct": 234.38
+  },
+  "cme_live_cattle": {
+    "apr": {
+      "high": 122.85,
+      "low": 121.23,
+      "change": 1.35,
+      "close": 122.73
+    },
+    "jun": {
+      "high": 125.13,
+      "low": 124.18,
+      "change": 0.2,
+      "close": 124.63
+    },
+    "aug": {
+      "high": 123.88,
+      "low": 123.13,
+      "change": 0.13,
+      "close": 123.43
+    }
+  },
+  "cme_feeder_cattle": {
+    "apr": {
+      "high": 147.1,
+      "low": 146.05,
+      "change": 0.03,
+      "settle": 146.48
+    },
+    "may": {
+      "high": 152.75,
+      "low": 150.95,
+      "change": null,
+      "settle": 151.78
+    },
+    "aug": {
+      "high": 161.38,
+      "low": 159.75,
+      "change": 0.8,
+      "settle": 160.95
+    }
+  }
+}

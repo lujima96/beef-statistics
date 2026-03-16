@@ -1,0 +1,128 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "report_code": {
+      "type": "string"
+    },
+    "report_date": {
+      "type": "string"
+    },
+    "run": {
+      "type": "string"
+    },
+    "current_volume": {
+      "type": "object",
+      "properties": {
+        "central": {
+          "type": "object",
+          "properties": {
+            "loads": {
+              "type": "number"
+            },
+            "pounds": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "loads",
+            "pounds"
+          ]
+        },
+        "national": {
+          "type": "object",
+          "properties": {
+            "loads": {
+              "type": "number"
+            },
+            "pounds": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "loads",
+            "pounds"
+          ]
+        }
+      }
+    },
+    "sections": {
+      "type": "object",
+      "properties": {
+        "markets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "market_key": {
+                "type": "string"
+              },
+              "lines": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "category": {
+                      "type": "string"
+                    },
+                    "lean_label": {
+                      "type": "string"
+                    },
+                    "trades": {
+                      "type": "integer"
+                    },
+                    "pounds": {
+                      "type": "integer"
+                    },
+                    "low": {
+                      "type": [
+                        "null",
+                        "number"
+                      ]
+                    },
+                    "high": {
+                      "type": [
+                        "null",
+                        "number"
+                      ]
+                    },
+                    "weighted_average": {
+                      "type": [
+                        "null",
+                        "number"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "category",
+                    "high",
+                    "lean_label",
+                    "low",
+                    "pounds",
+                    "trades",
+                    "weighted_average"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "lines",
+              "market_key"
+            ]
+          }
+        }
+      },
+      "required": [
+        "markets"
+      ]
+    }
+  },
+  "required": [
+    "current_volume",
+    "report_code",
+    "report_date",
+    "run",
+    "sections"
+  ],
+  "title": "Processed Trimmings AM"
+}

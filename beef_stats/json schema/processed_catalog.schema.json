@@ -1,0 +1,410 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "report": {
+      "type": "object",
+      "properties": {
+        "report_code": {
+          "type": "string"
+        },
+        "report_name": {
+          "type": "string"
+        },
+        "report_date": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "location": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "location",
+        "report_code",
+        "report_date",
+        "report_name"
+      ]
+    },
+    "daily_estimated_cutout_values": {
+      "type": "object",
+      "properties": {
+        "weight_range": {
+          "type": "string"
+        },
+        "choice_cutout": {
+          "type": "number"
+        },
+        "select_cutout": {
+          "type": "number"
+        },
+        "choice_select_spread": {
+          "type": "number"
+        },
+        "choice_change": {
+          "type": "number"
+        },
+        "select_change": {
+          "type": "number"
+        },
+        "primals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "primal": {
+                "type": "string"
+              },
+              "choice": {
+                "type": "number"
+              },
+              "select": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "choice",
+              "primal",
+              "select"
+            ]
+          }
+        },
+        "loads": {
+          "type": "object",
+          "properties": {
+            "total": {
+              "type": "integer"
+            },
+            "choice": {
+              "type": "integer"
+            },
+            "select": {
+              "type": "integer"
+            },
+            "trimmings": {
+              "type": "integer"
+            },
+            "grinds": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "choice",
+            "grinds",
+            "select",
+            "total",
+            "trimmings"
+          ]
+        },
+        "fresh_50pct_trimmings": {
+          "type": "object",
+          "properties": {
+            "loads": {
+              "type": "integer"
+            },
+            "price": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "required": [
+        "choice_change",
+        "fresh_50pct_trimmings",
+        "loads",
+        "primals",
+        "select_change",
+        "weight_range"
+      ]
+    },
+    "byproduct_drop_value": {
+      "type": "object",
+      "properties": {
+        "report_code": {
+          "type": "string"
+        },
+        "value": {
+          "type": "number"
+        },
+        "change": {
+          "type": [
+            "number",
+            "string"
+          ]
+        }
+      },
+      "required": [
+        "change",
+        "report_code",
+        "value"
+      ]
+    },
+    "five_area_weekly_avg_cattle_price": {
+      "type": "object",
+      "properties": {
+        "report_code": {
+          "type": "string"
+        },
+        "as_of_time": {
+          "type": "string"
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "head_count": {
+                "type": "integer"
+              },
+              "avg_weight": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "avg_price": {
+                "type": [
+                  "null",
+                  "number"
+                ]
+              }
+            },
+            "required": [
+              "avg_price",
+              "avg_weight",
+              "head_count",
+              "type"
+            ]
+          }
+        }
+      },
+      "required": [
+        "as_of_time",
+        "categories",
+        "report_code"
+      ]
+    },
+    "estimated_daily_cattle_slaughter": {
+      "type": "object",
+      "properties": {
+        "report_code": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "today": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "week_ago": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "year_ago_actual": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "week_to_date": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "same_period_last_week": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "same_period_last_year": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "previous_day_estimated": {
+          "type": "object",
+          "properties": {
+            "steer_and_heifer": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "friday": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    },
+                    "saturday": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "friday",
+                    "saturday"
+                  ]
+                }
+              ]
+            },
+            "cow_and_bull": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "friday": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    },
+                    "saturday": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "friday",
+                    "saturday"
+                  ]
+                }
+              ]
+            }
+          },
+          "required": [
+            "cow_and_bull",
+            "steer_and_heifer"
+          ]
+        }
+      },
+      "required": [
+        "previous_day_estimated",
+        "report_code",
+        "same_period_last_week",
+        "same_period_last_year",
+        "today",
+        "week_ago",
+        "week_to_date",
+        "year_ago_actual"
+      ]
+    },
+    "beef_production": {
+      "type": "object",
+      "properties": {
+        "report_code": {
+          "type": "string"
+        },
+        "week_end_date": {
+          "type": "string"
+        },
+        "this_week_estimate": {
+          "type": "object",
+          "properties": {
+            "slaughter": {
+              "type": "integer"
+            },
+            "live_weights": {
+              "type": "integer"
+            },
+            "dressed_weights": {
+              "type": "integer"
+            },
+            "production_million_lbs": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "dressed_weights",
+            "live_weights",
+            "production_million_lbs",
+            "slaughter"
+          ]
+        },
+        "last_week_estimate": {
+          "type": "object",
+          "properties": {
+            "slaughter": {
+              "type": "integer"
+            },
+            "live_weights": {
+              "type": "integer"
+            },
+            "dressed_weights": {
+              "type": "integer"
+            },
+            "production_million_lbs": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "dressed_weights",
+            "live_weights",
+            "production_million_lbs",
+            "slaughter"
+          ]
+        },
+        "last_year_actual": {
+          "type": "object",
+          "properties": {
+            "slaughter": {
+              "type": "integer"
+            },
+            "live_weights": {
+              "type": "integer"
+            },
+            "dressed_weights": {
+              "type": "integer"
+            },
+            "production_million_lbs": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "dressed_weights",
+            "live_weights",
+            "production_million_lbs",
+            "slaughter"
+          ]
+        }
+      },
+      "required": [
+        "last_week_estimate",
+        "last_year_actual",
+        "report_code",
+        "this_week_estimate",
+        "week_end_date"
+      ]
+    }
+  },
+  "required": [
+    "byproduct_drop_value",
+    "daily_estimated_cutout_values",
+    "estimated_daily_cattle_slaughter",
+    "five_area_weekly_avg_cattle_price",
+    "report"
+  ],
+  "title": "Processed Catalog"
+}

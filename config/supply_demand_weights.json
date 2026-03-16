@@ -1,0 +1,25 @@
+{
+  "demand": {
+    "choice_cutout_z": 0.45,
+    "choice_select_spread_z": 0.30,
+    "trim_50_price_z": 0.25,
+    "notes": "Weights sum to 1.00; derived from historical sensitivity (cutout ~45%, spread ~30%, fresh 50% trim price ~25%)"
+  },
+  "supply": {
+    "slaughter_head_z": 0.40,
+    "trim_loads_z": 0.35,
+    "packer_margin_z": -0.25,
+    "notes": "Negative weight for packer margin since wider margins imply tighter supply."
+  },
+  "windows": {
+    "short_days": 30,
+    "medium_days": 120
+  },
+  "coverage": {
+    "minimum_components": {
+      "demand": 2,
+      "supply": 2
+    },
+    "reweight_missing": true
+  }
+}

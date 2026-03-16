@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "run": { "type": "string" },
+    "report_id": { "type": "string" },
+    "report_date": { "type": "string" },
+    "location": { "type": "string" },
+    "source": { "type": "string" },
+    "sub_primal_negotiated_cut_prices": {
+      "type": "object",
+      "properties": {
+        "choice": { "$ref": "#/definitions/subprimalArray" },
+        "select": { "$ref": "#/definitions/subprimalArray" },
+        "mixed":  { "$ref": "#/definitions/subprimalArray" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": ["run", "report_id", "report_date", "sub_primal_negotiated_cut_prices"],
+  "additionalProperties": false,
+  "definitions": {
+    "subprimalItem": {
+      "type": "object",
+      "properties": {
+        "imps": { "type": "string" },
+        "sub_primal": { "type": "string" },
+        "fat_limit": { "type": ["string", "null"] },
+        "weighted_average": { "type": ["number", "null"] }
+      },
+      "required": ["imps", "sub_primal", "weighted_average"],
+      "additionalProperties": false
+    },
+    "subprimalArray": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/subprimalItem" }
+    }
+  },
+  "title": "Processed Boxed Beef PM (Simplified)"
+}
+

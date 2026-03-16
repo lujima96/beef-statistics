@@ -1,0 +1,45 @@
+1. Confirm the planner is ready for routing data
+The estimator already persists optional routing metadata—latitude, longitude, serviceMinutes, and sequence—for every vendor, and those fields flow through both the frontend state and the backend validators. That means the coordinates you key in manually can be handed straight to a routing engine.
+The vendor form also exposes inputs for those values, so no UI surgery is needed before you start calling an external routing API.
+
+2. Stand up an OpenStreetMap-backed router (GraphHopper example)
+Download map data – Grab the .pbf extract that covers your service territory from Geofabrik.
+
+Run GraphHopper – The quickest path is Docker:
+
+docker run -d --name graphhopper -p 8989:8989 \
+  -v $PWD/graphhopper:/data \
+  -e JAVA_TOOL_OPTIONS='-Xmx4g' \
+  graphhopper/graphhopper:latest \
+  -Dgraphhopper.datareader.file=/data/<region>.osm.pbf \
+  -Dgraphhopper.graph.location=/data/graph-cache
+The container will ingest the .pbf, build its routing graph, and expose REST endpoints on port 8989 (e.g., GET /route?point=lat,lon&point=lat,lon&profile=car).
+
+Repeatable updates – Store the .pbf and GraphHopper cache under versioned directories so you can refresh the graph (e.g., quarterly) without losing the previous build.
+
+Alternative: If you prefer OSRM or Valhalla, the flow is the same—download .pbf, run the Docker image to preprocess it, and expose the HTTP API. Pick the one whose API and profiles best match your fleet (car vs. truck, turn restrictions, etc.).
+
+3. Proxy the router through FastAPI
+Add a new endpoint in back-end/API/routes/delivery_estimator.py (next to the existing /state handlers) that accepts the ordered vendor list, calls your GraphHopper instance, and returns leg distances/times. Reuse the same Pydantic models so the payload stays in sync with the persisted schema.
+Implementation tips:
+
+Use httpx.AsyncClient (already compatible with FastAPI) to hit http://graphhopper:8989/route.
+
+Cache responses (e.g., by hashing the ordered stop IDs) so repeat plans don’t hammer the router.
+
+Normalize the response into per-leg summaries plus totals; those can later populate TripLogEntry.milesDriven and any optimization routines.
+
+4. Consume the plan on the frontend
+From DeliveryEstimator.tsx, call the new backend route with the vendor array you already maintain in state (use the existing buildApiUrl helper to keep base URLs consistent).
+Once the backend returns a plan:
+
+Pre-fill trip log mileage and enable the “Auto” cost buttons with the computed totals.
+
+Split the vendor list per truck (evenly at first, then iterate toward VRP logic) and persist those assignments so the UI can render who drives which stops.
+
+5. Operational checklist
+Secure the routing container (limit access or keep it on a private network).
+
+Monitor memory/CPU—OSM graphs can be large; allocate 4–8 GB RAM for regional extracts.
+
+Document the map build process so you can regenerate the graph when OSM data updates.

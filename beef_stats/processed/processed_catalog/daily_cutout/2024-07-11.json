@@ -1,0 +1,56 @@
+{
+  "daily_estimated_cutout_values": {
+    "weight_range": "600-900#",
+    "choice_cutout": 321.65,
+    "select_cutout": 303.38,
+    "choice_select_spread": 18.27,
+    "primals": [
+      {
+        "primal": "Rib",
+        "choice": 453.24,
+        "select": 411.43
+      },
+      {
+        "primal": "Chuck",
+        "choice": 273.7,
+        "select": 267.67
+      },
+      {
+        "primal": "Round",
+        "choice": 281.05,
+        "select": 282.2
+      },
+      {
+        "primal": "Loin",
+        "choice": 432.52,
+        "select": 377.42
+      },
+      {
+        "primal": "Brisket",
+        "choice": 260.67,
+        "select": 261.93
+      },
+      {
+        "primal": "Short Plate",
+        "choice": 212.97,
+        "select": 212.97
+      },
+      {
+        "primal": "Flank",
+        "choice": 185.19,
+        "select": 175.62
+      }
+    ],
+    "loads": {
+      "total": 142,
+      "choice": 98,
+      "select": 600,
+      "trimmings": 7,
+      "grinds": 8
+    },
+    "fresh_50pct_trimmings": {
+      "loads": 7,
+      "price": 115.64
+    }
+  }
+}

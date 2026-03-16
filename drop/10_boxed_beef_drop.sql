@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS boxed_metadata_fat_limitations CASCADE;
+DROP TABLE IF EXISTS boxed_metadata CASCADE;
+DROP TABLE IF EXISTS boxed_sub_primal_prices CASCADE;
+DROP TABLE IF EXISTS boxed_ground_beef_trimmings CASCADE;
+DROP TABLE IF EXISTS boxed_five_day_averages CASCADE;
+DROP TABLE IF EXISTS boxed_load_count_summary CASCADE;
+DROP TABLE IF EXISTS boxed_composite_primal_values CASCADE;
+DROP TABLE IF EXISTS boxed_current_volume CASCADE;
+DROP TABLE IF EXISTS boxed_cutout_values CASCADE;
+DROP TABLE IF EXISTS boxed_beef_reports CASCADE;

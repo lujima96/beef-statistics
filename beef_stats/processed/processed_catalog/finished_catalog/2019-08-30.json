@@ -1,0 +1,195 @@
+{
+  "report": {
+    "report_code": "LM_XB403",
+    "report_name": "National Daily Cattle & Beef Summary",
+    "report_date": "2019-08-30",
+    "location": "Des Moines, Iowa"
+  },
+  "daily_estimated_cutout_values": {
+    "weight_range": "600-900#",
+    "choice_cutout": 231.77,
+    "select_cutout": 212.27,
+    "choice_select_spread": 19.5,
+    "primals": [
+      {
+        "primal": "Rib",
+        "choice": 375.12,
+        "select": 302.41
+      },
+      {
+        "primal": "Chuck",
+        "choice": 184.63,
+        "select": 181.63
+      },
+      {
+        "primal": "Round",
+        "choice": 192.58,
+        "select": 190.99
+      },
+      {
+        "primal": "Loin",
+        "choice": 308.32,
+        "select": 265.28
+      },
+      {
+        "primal": "Brisket",
+        "choice": 202.55,
+        "select": 191.7
+      },
+      {
+        "primal": "Short Plate",
+        "choice": 161.76,
+        "select": 161.76
+      },
+      {
+        "primal": "Flank",
+        "choice": 127.6,
+        "select": 119.16
+      }
+    ],
+    "loads": {
+      "total": 73,
+      "choice": 35,
+      "select": 14,
+      "trimmings": 13,
+      "grinds": 11
+    },
+    "fresh_50pct_trimmings": {
+      "loads": 13,
+      "price": 91.52
+    }
+  },
+  "byproduct_drop_value": {
+    "report_code": "NW_LS441",
+    "value": 9.18,
+    "change": "unchanged"
+  },
+  "five_area_weekly_avg_cattle_price": {
+    "report_code": "LM_CT100",
+    "as_of_time": "10:00 am",
+    "categories": [
+      {
+        "type": "Live Steer",
+        "head_count": 11689,
+        "avg_weight": 1423,
+        "avg_price": 106.62
+      },
+      {
+        "type": "Live Heifer",
+        "head_count": 7084,
+        "avg_weight": 1298,
+        "avg_price": 104.89
+      },
+      {
+        "type": "Dressed Steer",
+        "head_count": 13537,
+        "avg_weight": 913,
+        "avg_price": 171.62
+      },
+      {
+        "type": "Dressed Heifer",
+        "head_count": 4799,
+        "avg_weight": 805,
+        "avg_price": 171.58
+      }
+    ]
+  },
+  "estimated_daily_cattle_slaughter": {
+    "report_code": "SJ_LS710",
+    "today": 115000,
+    "week_ago": 115000,
+    "year_ago_actual": 119000,
+    "week_to_date": 580000,
+    "same_period_last_week": 577000,
+    "same_period_last_year": 597000,
+    "previous_day_estimated": {
+      "steer_and_heifer": 91000,
+      "cow_and_bull": 25000
+    }
+  },
+  "beef_production": {
+    "report_code": "SJ_LS712",
+    "week_end_date": "2019-08-31",
+    "this_week_estimate": {
+      "slaughter": 644000,
+      "live_weights": 1335,
+      "dressed_weights": 812,
+      "production_million_lbs": 521.7
+    },
+    "last_week_estimate": {
+      "slaughter": 654000,
+      "live_weights": 1332,
+      "dressed_weights": 810,
+      "production_million_lbs": 528.7
+    },
+    "last_year_actual": {
+      "slaughter": 645000,
+      "live_weights": 1349,
+      "dressed_weights": 822,
+      "production_million_lbs": 527.8
+    }
+  },
+  "beef_carcass_price_equivalent_index": {
+    "report_code": "NW_LS410",
+    "choice": {
+      "weight_range": "600-900#",
+      "value": 192.07,
+      "change": -1.07
+    },
+    "select": {
+      "weight_range": "600-900#",
+      "value": 170.24,
+      "change": -1.12
+    },
+    "dressing_percent": {
+      "steer": 63.58,
+      "heifer": 63.46
+    }
+  },
+  "national_cutter_cow_carcass_cutout": {
+    "report_code": "LM_XB405",
+    "value": 175.85,
+    "change": 0.08,
+    "lean_90pct": 225.04
+  },
+  "cme_live_cattle": {
+    "aug": {
+      "high": 105.75,
+      "low": 104.63,
+      "close": 105.0,
+      "change": -0.65
+    },
+    "oct": {
+      "high": 100.55,
+      "low": 98.35,
+      "close": 98.93,
+      "change": -0.87
+    },
+    "dec": {
+      "high": 105.38,
+      "low": 103.08,
+      "close": 103.68,
+      "change": -0.57
+    }
+  },
+  "cme_feeder_cattle": {
+    "sep": {
+      "high": 134.9,
+      "low": null,
+      "close": 132.4,
+      "change": 1.0
+    },
+    "oct": {
+      "high": 133.8,
+      "low": 130.2,
+      "close": 130.8,
+      "change": 1.17
+    },
+    "nov": {
+      "high": 133.25,
+      "low": 130.0,
+      "close": 130.33,
+      "change": 1.6
+    }
+  }
+}

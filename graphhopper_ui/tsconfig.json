@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "jsx": "react-jsx",
+        "jsxImportSource": "react",
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "importHelpers": true,
+        "module": "ES2015",
+        "moduleResolution": "node",
+        "noImplicitReturns": true,
+        "strict": true,
+        "target": "ES2019",
+        "paths": {
+            "@/*": ["src/*"],
+        },
+        "lib": ["ES2019", "dom", "dom.iterable"],
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true
+    },
+    "include": ["./src/**/*", "./test/**/*"],
+}

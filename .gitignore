@@ -1,0 +1,29 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ---- Beef_Stats additions ----
+# Ignore GraphHopper build artifacts, local maps, and caches
+graphhopper/**/target/
+graphhopper/graph-cache/
+graphhopper/map-data/
+graphhopper/*.osm.pbf
+graphhopper/*.log
+
+# Python + FastAPI temp files
+__pycache__/
+*.py[cod]
+*.db
+*.sqlite3
+
+# Node + Frontend build junk
+front_end/node_modules/
+front_end/dist/
+front_end/build/
+
+# Environment and local configs
+.env
+*.local
+*.bak

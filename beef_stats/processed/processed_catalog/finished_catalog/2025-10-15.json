@@ -1,0 +1,186 @@
+{
+  "report": {
+    "report_code": "AMS_2453/LM_XB403",
+    "report_name": "National Daily Cattle & Beef Summary",
+    "report_date": "2025-10-15",
+    "location": "Des Moines, Iowa"
+  },
+  "daily_estimated_cutout_values": {
+    "weight_range": "600-900#",
+    "choice_cutout": 366.48,
+    "select_cutout": 349.16,
+    "choice_select_spread": 17.32,
+    "primals": [
+      {
+        "primal": "Rib",
+        "choice": 621.88,
+        "select": 545.06
+      },
+      {
+        "primal": "Chuck",
+        "choice": 296.31,
+        "select": 301.24
+      },
+      {
+        "primal": "Round",
+        "choice": 322.35,
+        "select": 321.15
+      },
+      {
+        "primal": "Loin",
+        "choice": 459.57,
+        "select": 417.04
+      },
+      {
+        "primal": "Brisket",
+        "choice": 307.93,
+        "select": 293.9
+      },
+      {
+        "primal": "Short Plate",
+        "choice": 228.39,
+        "select": 228.39
+      },
+      {
+        "primal": "Flank",
+        "choice": 200.07,
+        "select": 199.53
+      }
+    ],
+    "loads": {
+      "total": 156,
+      "choice": 102,
+      "select": 15,
+      "trimmings": 21,
+      "grinds": 18
+    },
+    "fresh_50pct_trimmings": {
+      "loads": 21,
+      "price": 139.36
+    }
+  },
+  "byproduct_drop_value": {
+    "report_code": "AMS 2829/NW_LS441",
+    "value": 11.16,
+    "change": "unchanged"
+  },
+  "five_area_weekly_avg_cattle_price": {
+    "report_code": "AMS_2460/LM_CT100",
+    "as_of_time": "10:00 am",
+    "categories": [
+      {
+        "type": "Live Steer",
+        "head_count": 58,
+        "avg_weight": 1400,
+        "avg_price": 236.0
+      },
+      {
+        "type": "Live Heifer",
+        "head_count": 157,
+        "avg_weight": 1353,
+        "avg_price": 236.0
+      },
+      {
+        "type": "Dressed Steer",
+        "head_count": 0,
+        "avg_weight": null,
+        "avg_price": null
+      }
+    ]
+  },
+  "estimated_daily_cattle_slaughter": {
+    "report_code": "AMS 3208/SJ_LS710",
+    "today": 122000,
+    "week_ago": 118000,
+    "year_ago_actual": 125492,
+    "week_to_date": 348000,
+    "same_period_last_week": 335000,
+    "same_period_last_year": 369193,
+    "previous_day_estimated": {
+      "steer_and_heifer": 96000,
+      "cow_and_bull": 24000
+    }
+  },
+  "beef_production": {
+    "report_code": "AMS_3209/SJ_LS712",
+    "week_end_date": "2025-10-11",
+    "this_week_estimate": {
+      "slaughter": null,
+      "live_weights": null,
+      "dressed_weights": null,
+      "production_million_lbs": null
+    },
+    "last_week_estimate": {
+      "slaughter": null,
+      "live_weights": null,
+      "dressed_weights": null,
+      "production_million_lbs": null
+    },
+    "last_year_actual": {
+      "slaughter": null,
+      "live_weights": null,
+      "dressed_weights": null,
+      "production_million_lbs": null
+    }
+  },
+  "beef_carcass_price_equivalent_index": {
+    "report_code": "AMS_2825/NW_LS410",
+    "choice": {
+      "weight_range": "600-900#",
+      "value": 354.44,
+      "change": 1.07
+    },
+    "select": {
+      "weight_range": "600-900#",
+      "value": 335.21,
+      "change": -0.66
+    },
+    "dressing_percent": {
+      "steer": 63.91,
+      "heifer": 63.85
+    }
+  },
+  "national_cutter_cow_carcass_cutout": {
+    "report_code": "AMS_2455/LM_XB405"
+  },
+  "cme_live_cattle": {
+    "apr": {
+      "high": null,
+      "low": null,
+      "change": null,
+      "close": null
+    },
+    "jun": {
+      "high": null,
+      "low": null,
+      "change": null,
+      "close": null
+    },
+    "aug": {
+      "high": null,
+      "low": null,
+      "change": null,
+      "close": null
+    }
+  },
+  "cme_feeder_cattle": {
+    "apr": {
+      "high": null,
+      "low": null,
+      "change": null,
+      "settle": null
+    },
+    "may": {
+      "high": null,
+      "low": null,
+      "change": null,
+      "settle": null
+    },
+    "aug": {
+      "high": null,
+      "low": null,
+      "change": null,
+      "settle": null
+    }
+  }
+}

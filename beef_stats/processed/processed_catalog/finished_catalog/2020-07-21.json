@@ -1,0 +1,183 @@
+{
+  "report": {
+    "report_code": "AMS_2453/LM_XB403",
+    "report_name": "National Daily Cattle & Beef Summary",
+    "report_date": "2020-07-21",
+    "location": "Des Moines, Iowa"
+  },
+  "daily_estimated_cutout_values": {
+    "weight_range": "600-900#",
+    "choice_cutout": 200.88,
+    "select_cutout": 191.3,
+    "choice_select_spread": 10.15,
+    "primals": [
+      {
+        "primal": "Rib",
+        "choice": 328.69,
+        "select": 297.48
+      },
+      {
+        "primal": "Chuck",
+        "choice": 162.02,
+        "select": 157.91
+      },
+      {
+        "primal": "Round",
+        "choice": 166.43,
+        "select": 166.87
+      },
+      {
+        "primal": "Loin",
+        "choice": 268.64,
+        "select": 245.87
+      },
+      {
+        "primal": "Brisket",
+        "choice": 156.37,
+        "select": 156.65
+      },
+      {
+        "primal": "Short Plate",
+        "choice": 133.31,
+        "select": 133.31
+      },
+      {
+        "primal": "Flank",
+        "choice": 117.92,
+        "select": 115.57
+      }
+    ],
+    "loads": {
+      "total": 159,
+      "choice": 90,
+      "select": 600,
+      "trimmings": 11,
+      "grinds": 36
+    },
+    "fresh_50pct_trimmings": {
+      "loads": 17,
+      "price": 54.55
+    }
+  },
+  "byproduct_drop_value": {
+    "report_code": "AMS 2829/NW_LS441",
+    "value": 6.88,
+    "change": "unchanged"
+  },
+  "five_area_weekly_avg_cattle_price": {
+    "report_code": "AMS_2460/LM_CT100",
+    "as_of_time": "10:00 am",
+    "categories": [
+      {
+        "type": "Live Steer",
+        "head_count": 0,
+        "avg_weight": null,
+        "avg_price": 57.0
+      },
+      {
+        "type": "Dressed Heifer",
+        "head_count": 0,
+        "avg_weight": null,
+        "avg_price": null
+      }
+    ]
+  },
+  "estimated_daily_cattle_slaughter": {
+    "report_code": "AMS 3208/SJ_LS710",
+    "today": 118000,
+    "week_ago": 119000,
+    "year_ago_actual": 121000,
+    "week_to_date": 235000,
+    "same_period_last_week": 234000,
+    "same_period_last_year": 236000,
+    "previous_day_estimated": {
+      "steer_and_heifer": 94000,
+      "cow_and_bull": 23000
+    }
+  },
+  "beef_production": {
+    "report_code": "AMS_3209/SJ_LS712",
+    "week_end_date": "2020-07-17",
+    "this_week_estimate": {
+      "slaughter": 650000,
+      "live_weights": 1366,
+      "dressed_weights": 830,
+      "production_million_lbs": 538.4
+    },
+    "last_week_estimate": {
+      "slaughter": 664000,
+      "live_weights": 1368,
+      "dressed_weights": 831,
+      "production_million_lbs": 550.3
+    },
+    "last_year_actual": {
+      "slaughter": 655000,
+      "live_weights": 1320,
+      "dressed_weights": 806,
+      "production_million_lbs": 527.3
+    }
+  },
+  "beef_carcass_price_equivalent_index": {
+    "report_code": "AMS_2825/NW_LS410",
+    "choice": {
+      "weight_range": "600-900#",
+      "value": 168.31,
+      "change": -0.39
+    },
+    "select": {
+      "weight_range": "600-900#",
+      "value": 157.44,
+      "change": -0.1
+    },
+    "dressing_percent": {
+      "steer": 63.47,
+      "heifer": 63.41
+    }
+  },
+  "national_cutter_cow_carcass_cutout": {
+    "report_code": "AMS_2455/LM_XB405",
+    "value": 189.51,
+    "change": -3.38,
+    "lean_90pct": 238.83
+  },
+  "cme_live_cattle": {
+    "aug": {
+      "high": 102.6,
+      "low": 101.35,
+      "change": -0.43,
+      "close": 101.85
+    },
+    "oct": {
+      "high": 106.78,
+      "low": 105.73,
+      "change": -0.25,
+      "close": 106.13
+    },
+    "dec": {
+      "high": 110.78,
+      "low": 109.78,
+      "change": -0.15,
+      "close": 110.3
+    }
+  },
+  "cme_feeder_cattle": {
+    "aug": {
+      "high": 142.35,
+      "low": 140.73,
+      "change": -0.28,
+      "settle": 141.33
+    },
+    "sep": {
+      "high": 143.88,
+      "low": 142.38,
+      "change": -0.03,
+      "settle": 142.98
+    },
+    "oct": {
+      "high": 143.98,
+      "low": 142.55,
+      "change": 0.15,
+      "settle": 143.13
+    }
+  }
+}

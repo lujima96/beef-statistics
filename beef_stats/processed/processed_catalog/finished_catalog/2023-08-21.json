@@ -1,0 +1,81 @@
+{
+  "report": {
+    "report_code": null,
+    "report_name": null,
+    "report_date": null,
+    "location": "Des Moines, Iowa"
+  },
+  "daily_estimated_cutout_values": {
+    "primals": [
+      {
+        "primal": "Rib",
+        "choice": 466.38,
+        "select": 442.33
+      },
+      {
+        "primal": "Chuck",
+        "choice": 251.08,
+        "select": 249.83
+      },
+      {
+        "primal": "Round",
+        "choice": 245.18,
+        "select": 235.92
+      },
+      {
+        "primal": "Loin",
+        "choice": 396.55,
+        "select": 399.36
+      }
+    ],
+    "loads": {
+      "choice": 0
+    },
+    "fresh_50pct_trimmings": {}
+  },
+  "byproduct_drop_value": {},
+  "estimated_daily_cattle_slaughter": {
+    "report_code": null,
+    "today": null,
+    "week_ago": null,
+    "year_ago_actual": null,
+    "week_to_date": null,
+    "same_period_last_week": null,
+    "same_period_last_year": null,
+    "previous_day_estimated": {
+      "steer_and_heifer": {
+        "friday": null,
+        "saturday": null
+      },
+      "cow_and_bull": {
+        "friday": null,
+        "saturday": null
+      }
+    }
+  },
+  "beef_production": {
+    "report_code": "SJ_LS712",
+    "week_end_date": "2023-08-17",
+    "this_week_estimate": {
+      "slaughter": null,
+      "live_weights": null,
+      "dressed_weights": null,
+      "production_million_lbs": null
+    },
+    "last_week_estimate": {
+      "slaughter": null,
+      "live_weights": null,
+      "dressed_weights": null,
+      "production_million_lbs": null
+    },
+    "last_year_actual": {
+      "slaughter": null,
+      "live_weights": null,
+      "dressed_weights": null,
+      "production_million_lbs": null
+    }
+  },
+  "national_cutter_cow_carcass_cutout": {},
+  "cme_live_cattle": {},
+  "cme_feeder_cattle": {}
+}

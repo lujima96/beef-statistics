@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "report_id": { "type": "string" },
+    "location": { "type": "string" },
+    "date": { "type": "string" },
+    "source": { "type": "string" },
+    "sections": {
+      "type": "object",
+      "properties": {
+        "national_daily_direct_cattle": {
+          "type": "object",
+          "properties": {
+            "live_steer": { "$ref": "#/definitions/liveCattle" },
+            "live_heifer": { "$ref": "#/definitions/liveCattle" }
+          },
+          "required": ["live_steer", "live_heifer"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["national_daily_direct_cattle"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["report_id", "date", "sections"],
+  "additionalProperties": false,
+  "definitions": {
+    "liveCattle": {
+      "type": "object",
+      "properties": {
+        "weight": { "type": "integer" },
+        "price": { "type": "number" },
+        "head": { "type": "integer" }
+      },
+      "required": ["weight", "price", "head"],
+      "additionalProperties": false
+    }
+  },
+  "title": "Processed Index (Simplified)"
+}
+

@@ -1,0 +1,25 @@
+
+Allow updating to occur while application is running for selenium scraping (beef data)
+
+
+Allow for more than two workers on a truck (1-3 per truck)
+
+Begin planning for a "suggested stops along route"
+
+Begin researching on how to tolerate carrying capacity. Van has lowest carrying capacity and even though it is
+
+cheapest it cannot do all stops
+
+(maybe define in vehicle page number_of_stops_capable_of could be slider or number box input)
+
+Introduce multi panel map view to quickly see side-by-side comparison of different legs
+
+Refactor GIGANTIC files. This is a non-trivial task as the DelivertEstimator.tsx has reached 6k lines.
+
+Beging mobile optimization.
+
+Fix route splitting. Check delivery data cornerstone.
+
+Create DB tables and begin entering in receipt and maintenance data given by jamie.
+
+Remove tables. Not a utilized feature.
