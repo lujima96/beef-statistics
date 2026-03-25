@@ -1,29 +1,30 @@
+# Environment
 .env
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
 
-# ---- Beef_Stats additions ----
-# Ignore GraphHopper build artifacts, local maps, and caches
-graphhopper/**/target/
-graphhopper/graph-cache/
-graphhopper/map-data/
-graphhopper/*.osm.pbf
-graphhopper/*.log
-
-# Python + FastAPI temp files
+# Python
 __pycache__/
 *.py[cod]
+*.pyo
+*.pyd
 *.db
 *.sqlite3
 
-# Node + Frontend build junk
-front_end/node_modules/
-front_end/dist/
-front_end/build/
+# Virtual environments
+.venv/
+venv/
+env/
 
-# Environment and local configs
-.env
-*.local
-*.bak
+# Generated data — re-fetched/re-parsed by the pipeline
+beef_stats/raw/
+beef_stats/processed/
+csv/
+
+# Chromedriver / Selenium cache
+.wdm/
+
+# IDE
+.vscode/
+.idea/
+
+# Root-owned directory (remove manually with: sudo rm -rf graphhopper_ui)
+graphhopper_ui/

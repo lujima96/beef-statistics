@@ -1,1 +1,0 @@
-Before proceeded please review the README.md file 

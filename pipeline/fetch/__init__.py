@@ -1,5 +1,5 @@
 """Fetch step entry points for the pipeline."""
 
-from . import text, weather  # noqa: F401
+from . import diesel, text  # noqa: F401
 
-__all__ = ["text", "weather"]
+__all__ = ["diesel", "text"]

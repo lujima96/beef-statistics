@@ -1,4 +1,4 @@
-"""Task orchestration for the beef statistics pipeline."""
+"""Task orchestration for the USDA beef data scraper pipeline."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Dict, Iterable, List, Mapping, Set
 
-from . import fetch, links, load, transform
+from . import fetch, links, transform
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 ROOT_DIR = Path(__file__).resolve().parents[1]
@@ -35,7 +35,7 @@ class TaskRunResult:
 TASKS: List[Task] = [
     Task("links.update_all", "links", links.update_all.run),
     Task("fetch.all_text", "fetch", fetch.text.run, frozenset({"links.update_all"})),
-    Task("fetch.weather", "fetch", fetch.weather.run),
+    Task("fetch.diesel", "fetch", fetch.diesel.run),
     Task("transform.raw_index", "transform", transform.raw_index.run, frozenset({"fetch.all_text"})),
     Task("transform.boxed_am", "transform", transform.boxed_am.run, frozenset({"fetch.all_text"})),
     Task("transform.boxed_pm", "transform", transform.boxed_pm.run, frozenset({"fetch.all_text"})),
@@ -54,133 +54,20 @@ TASKS: List[Task] = [
             }
         ),
     ),
-    Task(
-        "load.schema",
-        "load",
-        load.schema.run,
-        frozenset(
-            {
-                "links.update_all",
-                "fetch.all_text",
-                "transform.raw_index",
-                "transform.boxed_am",
-                "transform.boxed_pm",
-                "transform.trimmings_am",
-                "transform.trimmings_pm",
-                "transform.catalog",
-                "fetch.weather",
-            }
-        ),
-    ),
-    Task(
-        "load.boxed_am",
-        "load",
-        load.boxed_am.run,
-        frozenset({"transform.boxed_am", "load.schema"}),
-    ),
-    Task(
-        "load.boxed_pm",
-        "load",
-        load.boxed_pm.run,
-        frozenset({"transform.boxed_pm", "load.schema"}),
-    ),
-    Task(
-        "load.catalog",
-        "load",
-        load.catalog.run,
-        frozenset({"transform.catalog", "load.schema"}),
-    ),
-    Task(
-        "load.index",
-        "load",
-        load.index.run,
-        frozenset({"transform.raw_index", "load.schema"}),
-    ),
-    Task(
-        "load.trimmings_am",
-        "load",
-        load.trimmings_am.run,
-        frozenset({"transform.trimmings_am", "load.schema"}),
-    ),
-    Task(
-        "load.trimmings_pm",
-        "load",
-        load.trimmings_pm.run,
-        frozenset({"transform.trimmings_pm", "load.schema"}),
-    ),
-    Task(
-        "load.weekly_retail",
-        "load",
-        load.weekly_retail.run,
-        frozenset({"load.schema"}),
-    ),
-    Task(
-        "load.weekly_boxed_beef",
-        "load",
-        load.weekly_boxed_beef.run,
-        frozenset({"load.schema"}),
-    ),
-    Task(
-        "load.national_temperature",
-        "load",
-        load.national_temperature.run,
-        frozenset({"fetch.weather", "load.schema"}),
-    ),
-    Task(
-        "load.diesel",
-        "load",
-        load.diesel.run,
-        frozenset({"fetch.weather", "load.schema"}),
-    ),
-    Task(
-        "load.weather_occurrences",
-        "load",
-        load.weather_occurrences.run,
-        frozenset({"fetch.weather", "load.schema"}),
-    ),
-    Task(
-        "load.feed_costs",
-        "load",
-        load.feed_costs.run,
-        frozenset({"load.schema"}),
-    ),
 ]
 
 TASK_BY_NAME: Dict[str, Task] = {task.name: task for task in TASKS}
-GROUP_ORDER = ["links", "fetch", "transform", "load"]
+GROUP_ORDER = ["links", "fetch", "transform"]
 TASK_WATCH_PATHS: Mapping[str, tuple[Path, ...]] = {
-    "links.update_all": (ROOT_DIR / "links", ROOT_DIR / "beef_stats" / "links"),
-    "fetch.all_text": (ROOT_DIR / "beef_stats" / "raw", ROOT_DIR / "beef_stats" / "pdfs"),
-    "fetch.weather": (
-        ROOT_DIR / "national_daily_average_temp.csv",
-        ROOT_DIR / ".loader_state" / "national_daily_average_temperature.last",
-        ROOT_DIR / "weather" / "raw",
-        ROOT_DIR / "csv" / "energy" / "ulds_weekly_retail_prices.csv",
-    ),
+    "links.update_all": (ROOT_DIR / "links",),
+    "fetch.all_text": (ROOT_DIR / "beef_stats" / "raw",),
+    "fetch.diesel": (ROOT_DIR / "csv" / "energy" / "ulds_weekly_retail_prices.csv",),
     "transform.raw_index": (ROOT_DIR / "beef_stats" / "processed" / "processed_index",),
     "transform.boxed_am": (ROOT_DIR / "beef_stats" / "processed" / "processed_boxed_am",),
     "transform.boxed_pm": (ROOT_DIR / "beef_stats" / "processed" / "processed_boxed_pm",),
     "transform.trimmings_am": (ROOT_DIR / "beef_stats" / "processed" / "processed_trimmings_am",),
     "transform.trimmings_pm": (ROOT_DIR / "beef_stats" / "processed" / "processed_trimmings_pm",),
     "transform.catalog": (ROOT_DIR / "beef_stats" / "processed" / "processed_catalog",),
-    "load.boxed_am": (ROOT_DIR / ".loader_state" / "boxed_am.date",),
-    "load.boxed_pm": (ROOT_DIR / ".loader_state" / "boxed_pm.date",),
-    "load.catalog": (ROOT_DIR / ".loader_state" / "catalog.date",),
-    "load.index": (ROOT_DIR / ".loader_state" / "index.date",),
-    "load.trimmings_am": (ROOT_DIR / ".loader_state" / "trimmings_am.date",),
-    "load.trimmings_pm": (ROOT_DIR / ".loader_state" / "trimmings_pm.date",),
-    "load.weekly_retail": (ROOT_DIR / ".loader_state" / "weekly_retail.date",),
-    "load.weekly_boxed_beef": (ROOT_DIR / ".loader_state" / "weekly_boxed_beef.date",),
-    "load.national_temperature": (
-        ROOT_DIR / ".loader_state" / "national_daily_average_temperature.date",
-    ),
-    "load.diesel": (ROOT_DIR / ".loader_state" / "diesel_weekly_prices.date",),
-    "load.weather_occurrences": (
-        ROOT_DIR / ".loader_state" / "weather_occurrences_sources.json",
-    ),
-    "load.feed_costs": (
-        ROOT_DIR / ".loader_state" / "feed_costs.date",
-    ),
 }
 
 
@@ -330,7 +217,7 @@ def run_pipeline(groups: Iterable[str] | None = None) -> int:
 
 
 def main(argv: List[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Beef statistics pipeline runner")
+    parser = argparse.ArgumentParser(description="USDA beef data scraper pipeline")
     parser.add_argument(
         "--groups",
         nargs="+",
