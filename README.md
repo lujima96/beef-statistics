@@ -1,9 +1,8 @@
-# USDA Beef Data Scraper — Microservice
+# USDA Beef Data Scraper
 
 Scrapes USDA MyMarketNews for daily beef market reports and the EIA API for weekly diesel prices.
 Each report is parsed into structured JSON and stored locally on disk.
-A lightweight REST API lets any downstream application trigger runs and pull data.
-No database required — the consumer decides how to store it.
+Designed to be embedded directly into another Python project — no HTTP layer, no database required.
 
 ---
 
@@ -20,15 +19,15 @@ Every run is incremental. Already-downloaded files are never re-fetched. Already
 
 ## Reports collected
 
-| Key | Source | Description |
+| Key | Description | Source |
 |---|---|---|
-| `boxed_am` | USDA AMS | Boxed beef morning report |
-| `boxed_pm` | USDA AMS | Boxed beef afternoon report |
-| `catalog` | USDA AMS | National daily cattle & beef summary |
-| `index` | USDA AMS | Beef carcass equivalent index |
-| `trimmings_am` | USDA AMS | Boneless trimmings morning report |
-| `trimmings_pm` | USDA AMS | Boneless trimmings afternoon report |
-| `diesel` | EIA API | U.S. weekly ULSD retail prices (from 2018) |
+| `boxed_am` | Boxed beef morning report | USDA AMS |
+| `boxed_pm` | Boxed beef afternoon report | USDA AMS |
+| `catalog` | National daily cattle & beef summary | USDA AMS |
+| `index` | Beef carcass equivalent index | USDA AMS |
+| `trimmings_am` | Boneless trimmings morning report | USDA AMS |
+| `trimmings_pm` | Boneless trimmings afternoon report | USDA AMS |
+| `diesel` | U.S. weekly ULSD retail prices (from 2018) | EIA API |
 
 ---
 
@@ -56,112 +55,77 @@ EIA_TOKEN=your_eia_api_token_here
 
 Free key available at https://www.eia.gov/opendata/register.php
 
-### 3. Start the service
-
-```bash
-# From the project directory
-python start.py
-
-# Or from anywhere — paths resolve relative to the script's location
-python /path/to/beef-statistics-main/start.py
-```
-
-Binds to `http://0.0.0.0:8000` by default.
-API docs available at `http://localhost:8000/docs`.
-
-### 4. Run the pipeline
-
-Trigger a full run via the API to start collecting data:
-
-```bash
-curl -X POST http://localhost:8000/run/all
-```
-
-Then poll `/status` to see when it finishes. Subsequent runs only pull new data.
-
 ---
 
-## Running alongside another application
+## Usage
 
-The service runs as its own process and communicates only over HTTP — it has no shared state with the calling application.
-
-**Start it programmatically:**
+Add the project root to your Python path, then import and call directly:
 
 ```python
-import os
-import subprocess
 import sys
+sys.path.insert(0, "/path/to/beef-statistics-main")
+
+from pipeline.runner import run_pipeline
+from scripts.energy.fetch_ulds_prices import main as fetch_diesel
+```
+
+### Run the full pipeline
+
+```python
+# Update links, fetch all new USDA reports, parse to JSON, fetch diesel
+run_pipeline()
+```
+
+### Run specific stages only
+
+```python
+# Links + fetch only (no parsing)
+run_pipeline(groups=["links", "fetch"])
+
+# Parse only (raw files must already exist)
+run_pipeline(groups=["transform"])
+
+# Diesel only
+fetch_diesel()
+```
+
+### Read the output
+
+```python
+import json
 from pathlib import Path
 
-proc = subprocess.Popen(
-    [sys.executable, str(Path("/path/to/beef-statistics-main/start.py"))],
-    env={**os.environ, "SERVICE_PORT": "8000"},
-)
+ROOT = Path("/path/to/beef-statistics-main")
 
-# Shut it down when done
-proc.terminate()
-```
+PROCESSED = {
+    "boxed_am":     ROOT / "beef_stats/processed/processed_boxed_am",
+    "boxed_pm":     ROOT / "beef_stats/processed/processed_boxed_pm",
+    "catalog":      ROOT / "beef_stats/processed/processed_catalog",
+    "index":        ROOT / "beef_stats/processed/processed_index",
+    "trimmings_am": ROOT / "beef_stats/processed/processed_trimmings_am",
+    "trimmings_pm": ROOT / "beef_stats/processed/processed_trimmings_pm",
+}
 
-**Call it from your application:**
+# Latest report for a type
+def get_latest(report_type: str) -> dict:
+    files = sorted(PROCESSED[report_type].glob("*.json"))
+    return json.loads(files[-1].read_text())
 
-```python
-import requests
+# Report for a specific date
+def get_by_date(report_type: str, date: str) -> dict:
+    path = PROCESSED[report_type] / f"{date}.json"
+    return json.loads(path.read_text())
 
-# Trigger a pipeline run (non-blocking)
-requests.post("http://localhost:8000/run/all")
+# All available dates for a type
+def get_dates(report_type: str) -> list[str]:
+    return sorted(p.stem for p in PROCESSED[report_type].glob("*.json"))
 
-# Check status
-status = requests.get("http://localhost:8000/status").json()
-
-# Pull the latest boxed AM report
-data = requests.get("http://localhost:8000/data/boxed_am/latest").json()
-```
-
-If port 8000 is already in use, set `SERVICE_PORT` to any free port.
-
----
-
-## API reference
-
-### Trigger runs
-
-All run endpoints are non-blocking — the pipeline executes in the background.
-Returns `409` if a run is already in progress.
-
-| Method | Endpoint | Description |
-|---|---|---|
-| `POST` | `/run/all` | Full run: update links → fetch → parse → diesel |
-| `POST` | `/run/fetch` | Update links and download raw USDA files only |
-| `POST` | `/run/transform` | Parse already-downloaded raw files to JSON only |
-| `POST` | `/run/diesel` | Fetch latest diesel prices from EIA only |
-
-### Status
-
-```
-GET /status
-```
-
-Returns pipeline state, file count and latest date per report type, and diesel row count.
-
-### Data
-
-```
-GET /data/diesel                     # all diesel prices as a JSON array
-GET /data/{report_type}/dates        # list of available dates
-GET /data/{report_type}/latest       # most recent parsed report
-GET /data/{report_type}/{date}       # report for a specific date (YYYY-MM-DD)
-```
-
-Valid `report_type` values: `boxed_am`, `boxed_pm`, `catalog`, `index`, `trimmings_am`, `trimmings_pm`
-
-**Examples:**
-
-```bash
-curl http://localhost:8000/status
-curl http://localhost:8000/data/boxed_am/latest
-curl http://localhost:8000/data/boxed_am/2025-03-20
-curl http://localhost:8000/data/trimmings_pm/dates
-curl http://localhost:8000/data/diesel
+# Diesel prices
+import csv
+def get_diesel() -> list[dict]:
+    path = ROOT / "csv/energy/ulds_weekly_retail_prices.csv"
+    with path.open() as f:
+        return list(csv.DictReader(f))
 ```
 
 ---
@@ -178,10 +142,10 @@ csv/
   energy/
     ulds_weekly_retail_prices.csv   # diesel prices, appended incrementally
 
-links/                        # USDA report URL lists, updated by the link updater
+links/                        # USDA report URL lists, updated automatically
 ```
 
-`raw/`, `processed/`, and `csv/` are gitignored — they are populated at runtime.
+`raw/`, `processed/`, and `csv/` are gitignored — populated at runtime.
 
 ---
 
@@ -191,6 +155,3 @@ links/                        # USDA report URL lists, updated by the link updat
 |---|---|---|---|
 | `EIA_TOKEN` | Yes | — | EIA API key for diesel price fetching |
 | `EIA_SERIES_ID` | No | `PET.EMD_EPD2DXL0_PTE_NUS_DPG.W` | EIA series ID to fetch |
-| `SERVICE_HOST` | No | `0.0.0.0` | Host to bind the service to |
-| `SERVICE_PORT` | No | `8000` | Port to bind the service to |
-| `SERVICE_RELOAD` | No | `false` | Enable hot-reload (development only) |
