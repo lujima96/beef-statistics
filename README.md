@@ -1,9 +1,20 @@
 # USDA Beef Data Scraper — Microservice
 
 Scrapes USDA MyMarketNews for daily beef market reports and the EIA API for weekly diesel prices.
-Parses every report to structured JSON and stores the files locally.
-Exposes a lightweight REST API so any downstream application can trigger runs and pull data —
-no database required on this end.
+Each report is parsed into structured JSON and stored locally on disk.
+A lightweight REST API lets any downstream application trigger runs and pull data.
+No database required — the consumer decides how to store it.
+
+---
+
+## How it works
+
+1. **Link updater** — checks USDA MyMarketNews for any report URLs not yet in the local link lists
+2. **Fetcher** — downloads raw report text/PDFs for any dates not already on disk
+3. **Parser** — converts raw files to structured JSON for any dates not already parsed
+4. **Diesel** — appends new weekly EIA diesel prices to a local CSV from the last known date forward
+
+Every run is incremental. Already-downloaded files are never re-fetched. Already-parsed files are never re-processed.
 
 ---
 
@@ -17,13 +28,13 @@ no database required on this end.
 | `index` | USDA AMS | Beef carcass equivalent index |
 | `trimmings_am` | USDA AMS | Boneless trimmings morning report |
 | `trimmings_pm` | USDA AMS | Boneless trimmings afternoon report |
-| `diesel` | EIA API | U.S. weekly ULSD retail prices |
+| `diesel` | EIA API | U.S. weekly ULSD retail prices (from 2018) |
 
 ---
 
 ## Setup
 
-### 1. Install Python dependencies
+### 1. Install dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -31,19 +42,19 @@ pip install -r requirements.txt
 
 Chrome must be installed — the USDA scrapers use Selenium with headless Chrome.
 
-### 2. Configure environment variables
+### 2. Configure environment
 
 ```bash
 cp .env.example .env
 ```
 
-Open `.env` and set your EIA token:
+Set your EIA API token in `.env`:
 
 ```
 EIA_TOKEN=your_eia_api_token_here
 ```
 
-Get a free key at https://www.eia.gov/opendata/register.php
+Free key available at https://www.eia.gov/opendata/register.php
 
 ### 3. Start the service
 
@@ -51,100 +62,126 @@ Get a free key at https://www.eia.gov/opendata/register.php
 # From the project directory
 python start.py
 
-# Or from anywhere — the script resolves paths relative to its own location
+# Or from anywhere — paths resolve relative to the script's location
 python /path/to/beef-statistics-main/start.py
 ```
 
 Binds to `http://0.0.0.0:8000` by default.
-Interactive API docs at `http://localhost:8000/docs`.
+API docs available at `http://localhost:8000/docs`.
+
+### 4. Run the pipeline
+
+Trigger a full run via the API to start collecting data:
+
+```bash
+curl -X POST http://localhost:8000/run/all
+```
+
+Then poll `/status` to see when it finishes. Subsequent runs only pull new data.
+
+---
+
+## Running alongside another application
+
+The service runs as its own process and communicates only over HTTP — it has no shared state with the calling application.
+
+**Start it programmatically:**
+
+```python
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+proc = subprocess.Popen(
+    [sys.executable, str(Path("/path/to/beef-statistics-main/start.py"))],
+    env={**os.environ, "SERVICE_PORT": "8000"},
+)
+
+# Shut it down when done
+proc.terminate()
+```
+
+**Call it from your application:**
+
+```python
+import requests
+
+# Trigger a pipeline run (non-blocking)
+requests.post("http://localhost:8000/run/all")
+
+# Check status
+status = requests.get("http://localhost:8000/status").json()
+
+# Pull the latest boxed AM report
+data = requests.get("http://localhost:8000/data/boxed_am/latest").json()
+```
+
+If port 8000 is already in use, set `SERVICE_PORT` to any free port.
 
 ---
 
 ## API reference
 
-### Trigger a pipeline run
+### Trigger runs
 
-All run endpoints return immediately and execute in the background.
-Poll `GET /status` to check completion.
+All run endpoints are non-blocking — the pipeline executes in the background.
+Returns `409` if a run is already in progress.
 
 | Method | Endpoint | Description |
 |---|---|---|
-| `POST` | `/run/all` | Full run: update links → fetch USDA reports → parse → fetch diesel |
+| `POST` | `/run/all` | Full run: update links → fetch → parse → diesel |
 | `POST` | `/run/fetch` | Update links and download raw USDA files only |
 | `POST` | `/run/transform` | Parse already-downloaded raw files to JSON only |
 | `POST` | `/run/diesel` | Fetch latest diesel prices from EIA only |
 
-### Check pipeline status
+### Status
 
 ```
 GET /status
 ```
 
-Returns current pipeline state, file count and latest available date per report type,
-and diesel CSV row count.
+Returns pipeline state, file count and latest date per report type, and diesel row count.
 
-### Pull data
+### Data
 
 ```
-GET /data/diesel
-GET /data/{report_type}/dates
-GET /data/{report_type}/latest
-GET /data/{report_type}/{date}
+GET /data/diesel                     # all diesel prices as a JSON array
+GET /data/{report_type}/dates        # list of available dates
+GET /data/{report_type}/latest       # most recent parsed report
+GET /data/{report_type}/{date}       # report for a specific date (YYYY-MM-DD)
 ```
 
-`report_type` is one of: `boxed_am`, `boxed_pm`, `catalog`, `index`, `trimmings_am`, `trimmings_pm`
+Valid `report_type` values: `boxed_am`, `boxed_pm`, `catalog`, `index`, `trimmings_am`, `trimmings_pm`
 
 **Examples:**
 
 ```bash
-# Check what's available
 curl http://localhost:8000/status
-
-# Get the most recent boxed AM report
 curl http://localhost:8000/data/boxed_am/latest
-
-# Get a specific date
 curl http://localhost:8000/data/boxed_am/2025-03-20
-
-# List all available dates for trimmings PM
 curl http://localhost:8000/data/trimmings_pm/dates
-
-# Get all diesel prices
 curl http://localhost:8000/data/diesel
 ```
 
 ---
 
-## Output file layout
-
-All output is written locally and re-generated by the pipeline on each run.
+## Local file layout
 
 ```
 beef_stats/
-  raw/
-    raw_boxed_am/          # downloaded USDA text files
-    raw_boxed_pm/
-    raw_catalog/
-    raw_index/
-    raw_trimmings_am/
-    raw_trimmings_pm/
-  processed/
-    processed_boxed_am/    # parsed JSON, one file per date (YYYY-MM-DD.json)
-    processed_boxed_pm/
-    processed_catalog/
-    processed_index/
-    processed_trimmings_am/
-    processed_trimmings_pm/
+  raw/                        # downloaded USDA text files (one per report per date)
+  processed/                  # parsed JSON output (YYYY-MM-DD.json per report type)
+  json schema/                # reference schemas describing the JSON structure
 
 csv/
   energy/
     ulds_weekly_retail_prices.csv   # diesel prices, appended incrementally
 
-beef_stats/json schema/    # reference JSON schemas for each report type
+links/                        # USDA report URL lists, updated by the link updater
 ```
 
-All `raw/`, `processed/`, and `csv/` paths are gitignored.
-The consuming application reads files directly from disk or via the API endpoints.
+`raw/`, `processed/`, and `csv/` are gitignored — they are populated at runtime.
 
 ---
 
@@ -152,8 +189,8 @@ The consuming application reads files directly from disk or via the API endpoint
 
 | Variable | Required | Default | Description |
 |---|---|---|---|
-| `EIA_TOKEN` | Yes | — | EIA API key for diesel prices |
-| `EIA_SERIES_ID` | No | `PET.EMD_EPD2DXL0_PTE_NUS_DPG.W` | EIA series to fetch |
+| `EIA_TOKEN` | Yes | — | EIA API key for diesel price fetching |
+| `EIA_SERIES_ID` | No | `PET.EMD_EPD2DXL0_PTE_NUS_DPG.W` | EIA series ID to fetch |
 | `SERVICE_HOST` | No | `0.0.0.0` | Host to bind the service to |
-| `SERVICE_PORT` | No | `8000` | Port to bind |
-| `SERVICE_RELOAD` | No | `false` | Enable uvicorn hot-reload (dev only) |
+| `SERVICE_PORT` | No | `8000` | Port to bind the service to |
+| `SERVICE_RELOAD` | No | `false` | Enable hot-reload (development only) |
