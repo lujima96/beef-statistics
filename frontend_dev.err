@@ -5464,3 +5464,221 @@ Emitted 'error' event on Interface instance at:
 }
 
 Node.js v20.19.4
+node:events:502
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: read EIO
+    at TTY.onStreamRead (node:internal/stream_base_commons:218:20)
+Emitted 'error' event on Interface instance at:
+    at ReadStream.onerror (node:internal/readline/interface:239:10)
+    at ReadStream.emit (node:events:524:28)
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:128:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  errno: -5,
+  code: 'EIO',
+  syscall: 'read'
+}
+
+Node.js v20.19.4
+
+  #  Node.js[1921800]: void node::ResetStdio() at ../src/node.cc:751
+  #  Assertion failed: !(err != 0) || (err == -1 && (*__errno_location ()) == 1)
+
+----- Native stack trace -----
+
+ 1: 0xcc80b7 node::Assert(node::AssertionInfo const&) [node]
+ 2: 0xc78034  [node]
+ 3: 0x723548245495  [/lib/x86_64-linux-gnu/libc.so.6]
+ 4: 0x723548245610 on_exit [/lib/x86_64-linux-gnu/libc.so.6]
+ 5: 0xbd94af node::DefaultProcessExitHandlerInternal(node::Environment*, node::ExitCode) [node]
+ 6: 0xc3851f node::Environment::Exit(node::ExitCode) [node]
+ 7: 0xf6e4ff v8::internal::FunctionCallbackArguments::Call(v8::internal::CallHandlerInfo) [node]
+ 8: 0xf6ed6d  [node]
+ 9: 0xf6f235 v8::internal::Builtin_HandleApiCall(int, unsigned long*, v8::internal::Isolate*) [node]
+10: 0x1979df6  [node]
+
+  #  Node.js[1921800]: void node::ResetStdio() at ../src/node.cc:751
+  #  Assertion failed: !(err != 0) || (err == -1 && (*__errno_location ()) == 1)
+
+----- Native stack trace -----
+
+ 1: 0xcc80b7 node::Assert(node::AssertionInfo const&) [node]
+ 2: 0xc78034  [node]
+ 3: 0xc7864d node::TrapWebAssemblyOrContinue(int, siginfo_t*, void*) [node]
+ 4: 0x723548242520  [/lib/x86_64-linux-gnu/libc.so.6]
+Aborted (core dumped)
+
+  #  Node.js[1921788]: void node::ResetStdio() at ../src/node.cc:751
+  #  Assertion failed: !(err != 0) || (err == -1 && (*__errno_location ()) == 1)
+
+----- Native stack trace -----
+
+ 1: 0xcc80b7 node::Assert(node::AssertionInfo const&) [npm run dev --host 0.0.0.0 --port 5173]
+ 2: 0xc78034  [npm run dev --host 0.0.0.0 --port 5173]
+ 3: 0x73f2d6045495  [/lib/x86_64-linux-gnu/libc.so.6]
+ 4: 0x73f2d6045610 on_exit [/lib/x86_64-linux-gnu/libc.so.6]
+ 5: 0xbd94af node::DefaultProcessExitHandlerInternal(node::Environment*, node::ExitCode) [npm run dev --host 0.0.0.0 --port 5173]
+ 6: 0xc3851f node::Environment::Exit(node::ExitCode) [npm run dev --host 0.0.0.0 --port 5173]
+ 7: 0xf6e4ff v8::internal::FunctionCallbackArguments::Call(v8::internal::CallHandlerInfo) [npm run dev --host 0.0.0.0 --port 5173]
+ 8: 0xf6ed6d  [npm run dev --host 0.0.0.0 --port 5173]
+ 9: 0xf6f235 v8::internal::Builtin_HandleApiCall(int, unsigned long*, v8::internal::Isolate*) [npm run dev --host 0.0.0.0 --port 5173]
+10: 0x1979df6  [npm run dev --host 0.0.0.0 --port 5173]
+
+  #  Node.js[1921788]: void node::ResetStdio() at ../src/node.cc:751
+  #  Assertion failed: !(err != 0) || (err == -1 && (*__errno_location ()) == 1)
+
+----- Native stack trace -----
+
+ 1: 0xcc80b7 node::Assert(node::AssertionInfo const&) [npm run dev --host 0.0.0.0 --port 5173]
+ 2: 0xc78034  [npm run dev --host 0.0.0.0 --port 5173]
+ 3: 0xc7864d node::TrapWebAssemblyOrContinue(int, siginfo_t*, void*) [npm run dev --host 0.0.0.0 --port 5173]
+ 4: 0x73f2d6042520  [/lib/x86_64-linux-gnu/libc.so.6]
+ 5: 0x40975c30 
+
+  #  Node.js[301873]: void node::ResetStdio() at ../src/node.cc:751
+  #  Assertion failed: !(err != 0) || (err == -1 && (*__errno_location ()) == 1)
+
+----- Native stack trace -----
+
+ 1: 0xcc80b7 node::Assert(node::AssertionInfo const&) [node]
+ 2: 0xc78034  [node]
+ 3: 0x76747d445495  [/lib/x86_64-linux-gnu/libc.so.6]
+ 4: 0x76747d445610 on_exit [/lib/x86_64-linux-gnu/libc.so.6]
+ 5: 0xbd94af node::DefaultProcessExitHandlerInternal(node::Environment*, node::ExitCode) [node]
+ 6: 0xc3851f node::Environment::Exit(node::ExitCode) [node]
+ 7: 0xf6e4ff v8::internal::FunctionCallbackArguments::Call(v8::internal::CallHandlerInfo) [node]
+ 8: 0xf6ed6d  [node]
+ 9: 0xf6f235 v8::internal::Builtin_HandleApiCall(int, unsigned long*, v8::internal::Isolate*) [node]
+10: 0x1979df6  [node]
+
+  #  Node.js[301873]: void node::ResetStdio() at ../src/node.cc:751
+  #  Assertion failed: !(err != 0) || (err == -1 && (*__errno_location ()) == 1)
+
+----- Native stack trace -----
+
+ 1: 0xcc80b7 node::Assert(node::AssertionInfo const&) [node]
+ 2: 0xc78034  [node]
+ 3: 0xc7864d node::TrapWebAssemblyOrContinue(int, siginfo_t*, void*) [node]
+ 4: 0x76747d442520  [/lib/x86_64-linux-gnu/libc.so.6]
+Aborted (core dumped)
+
+  #  Node.js[301472]: void node::ResetStdio() at ../src/node.cc:751
+  #  Assertion failed: !(err != 0) || (err == -1 && (*__errno_location ()) == 1)
+
+----- Native stack trace -----
+
+ 1: 0xcc80b7 node::Assert(node::AssertionInfo const&) [npm run dev --host 0.0.0.0 --port 5173]
+ 2: 0xc78034  [npm run dev --host 0.0.0.0 --port 5173]
+ 3: 0x79760ac45495  [/lib/x86_64-linux-gnu/libc.so.6]
+ 4: 0x79760ac45610 on_exit [/lib/x86_64-linux-gnu/libc.so.6]
+ 5: 0xbd94af node::DefaultProcessExitHandlerInternal(node::Environment*, node::ExitCode) [npm run dev --host 0.0.0.0 --port 5173]
+ 6: 0xc3851f node::Environment::Exit(node::ExitCode) [npm run dev --host 0.0.0.0 --port 5173]
+ 7: 0xf6e4ff v8::internal::FunctionCallbackArguments::Call(v8::internal::CallHandlerInfo) [npm run dev --host 0.0.0.0 --port 5173]
+ 8: 0xf6ed6d  [npm run dev --host 0.0.0.0 --port 5173]
+ 9: 0xf6f235 v8::internal::Builtin_HandleApiCall(int, unsigned long*, v8::internal::Isolate*) [npm run dev --host 0.0.0.0 --port 5173]
+10: 0x1979df6  [npm run dev --host 0.0.0.0 --port 5173]
+
+  #  Node.js[301472]: void node::ResetStdio() at ../src/node.cc:751
+  #  Assertion failed: !(err != 0) || (err == -1 && (*__errno_location ()) == 1)
+
+----- Native stack trace -----
+
+ 1: 0xcc80b7 node::Assert(node::AssertionInfo const&) [npm run dev --host 0.0.0.0 --port 5173]
+ 2: 0xc78034  [npm run dev --host 0.0.0.0 --port 5173]
+ 3: 0xc7864d node::TrapWebAssemblyOrContinue(int, siginfo_t*, void*) [npm run dev --host 0.0.0.0 --port 5173]
+ 4: 0x79760ac42520  [/lib/x86_64-linux-gnu/libc.so.6]
+ 5: 0x1c127e60 
+node:events:502
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: read EIO
+    at TTY.onStreamRead (node:internal/stream_base_commons:218:20)
+Emitted 'error' event on Interface instance at:
+    at ReadStream.onerror (node:internal/readline/interface:242:10)
+    at ReadStream.emit (node:events:524:28)
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:128:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  errno: -5,
+  code: 'EIO',
+  syscall: 'read'
+}
+
+Node.js v20.20.1
+
+  #  Node.js[689990]: void node::ResetStdio() at ../src/node.cc:751
+  #  Assertion failed: !(err != 0) || (err == -1 && (*__errno_location ()) == 1)
+
+----- Native stack trace -----
+
+ 1: 0xcb5137 node::Assert(node::AssertionInfo const&) [node]
+ 2: 0xc61934  [node]
+ 3: 0x791c71245495  [/lib/x86_64-linux-gnu/libc.so.6]
+ 4: 0x791c71245610 on_exit [/lib/x86_64-linux-gnu/libc.so.6]
+ 5: 0xbc162f node::DefaultProcessExitHandlerInternal(node::Environment*, node::ExitCode) [node]
+ 6: 0xc20f1f node::Environment::Exit(node::ExitCode) [node]
+ 7: 0xcb905b node::errors::TriggerUncaughtException(v8::Isolate*, v8::Local<v8::Value>, v8::Local<v8::Message>, bool) [node]
+ 8: 0x1079c20 v8::internal::MessageHandler::ReportMessageNoExceptions(v8::internal::Isolate*, v8::internal::MessageLocation const*, v8::internal::Handle<v8::internal::Object>, v8::Local<v8::Value>) [node]
+ 9: 0x1079e63 v8::internal::MessageHandler::ReportMessage(v8::internal::Isolate*, v8::internal::MessageLocation const*, v8::internal::Handle<v8::internal::JSMessageObject>) [node]
+10: 0x10658e7 v8::internal::Isolate::ReportPendingMessages() [node]
+11: 0x1048e28  [node]
+12: 0x1049b14 v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) [node]
+13: 0xf0c1cd v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) [node]
+14: 0xbbadaf node::InternalCallbackScope::Close() [node]
+15: 0xbbb12b node::InternalMakeCallback(node::Environment*, v8::Local<v8::Object>, v8::Local<v8::Object>, v8::Local<v8::Function>, int, v8::Local<v8::Value>*, node::async_context) [node]
+16: 0xbd231f node::AsyncWrap::MakeCallback(v8::Local<v8::Function>, int, v8::Local<v8::Value>*) [node]
+17: 0xdd6117 node::StreamBase::CallJSOnreadMethod(long, v8::Local<v8::ArrayBuffer>, unsigned long, node::StreamBase::StreamBaseJSChecks) [node]
+18: 0xdd6594 node::EmitToJSStreamListener::OnStreamRead(long, uv_buf_t const&) [node]
+19: 0xdddb3f node::LibuvStreamWrap::OnUvRead(long, uv_buf_t const*) [node]
+20: 0xdddf5a  [node]
+21: 0x18b5fc6  [node]
+22: 0x18b61f0  [node]
+23: 0x18bdc5b  [node]
+24: 0x18a9f07 uv_run [node]
+25: 0xbbbbe6 node::SpinEventLoopInternal(node::Environment*) [node]
+26: 0xd06bd1 node::NodeMainInstance::Run() [node]
+27: 0xc6853f node::Start(int, char**) [node]
+28: 0x791c71229d90  [/lib/x86_64-linux-gnu/libc.so.6]
+29: 0x791c71229e40 __libc_start_main [/lib/x86_64-linux-gnu/libc.so.6]
+30: 0xbb82be _start [node]
+
+  #  Node.js[689990]: void node::ResetStdio() at ../src/node.cc:751
+  #  Assertion failed: !(err != 0) || (err == -1 && (*__errno_location ()) == 1)
+
+----- Native stack trace -----
+
+ 1: 0xcb5137 node::Assert(node::AssertionInfo const&) [node]
+ 2: 0xc61934  [node]
+ 3: 0xc61f4d node::TrapWebAssemblyOrContinue(int, siginfo_t*, void*) [node]
+ 4: 0x791c71242520  [/lib/x86_64-linux-gnu/libc.so.6]
+Aborted (core dumped)
+
+  #  Node.js[689867]: void node::ResetStdio() at ../src/node.cc:751
+  #  Assertion failed: !(err != 0) || (err == -1 && (*__errno_location ()) == 1)
+
+----- Native stack trace -----
+
+ 1: 0xcb5137 node::Assert(node::AssertionInfo const&) [npm run dev --host 0.0.0.0 --port 5173]
+ 2: 0xc61934  [npm run dev --host 0.0.0.0 --port 5173]
+ 3: 0x71f686a45495  [/lib/x86_64-linux-gnu/libc.so.6]
+ 4: 0x71f686a45610 on_exit [/lib/x86_64-linux-gnu/libc.so.6]
+ 5: 0xbc162f node::DefaultProcessExitHandlerInternal(node::Environment*, node::ExitCode) [npm run dev --host 0.0.0.0 --port 5173]
+ 6: 0xc20f1f node::Environment::Exit(node::ExitCode) [npm run dev --host 0.0.0.0 --port 5173]
+ 7: 0xf507cf v8::internal::FunctionCallbackArguments::Call(v8::internal::CallHandlerInfo) [npm run dev --host 0.0.0.0 --port 5173]
+ 8: 0xf5103d  [npm run dev --host 0.0.0.0 --port 5173]
+ 9: 0xf51505 v8::internal::Builtin_HandleApiCall(int, unsigned long*, v8::internal::Isolate*) [npm run dev --host 0.0.0.0 --port 5173]
+10: 0x195bdf6  [npm run dev --host 0.0.0.0 --port 5173]
+
+  #  Node.js[689867]: void node::ResetStdio() at ../src/node.cc:751
+  #  Assertion failed: !(err != 0) || (err == -1 && (*__errno_location ()) == 1)
+
+----- Native stack trace -----
+
+ 1: 0xcb5137 node::Assert(node::AssertionInfo const&) [npm run dev --host 0.0.0.0 --port 5173]
+ 2: 0xc61934  [npm run dev --host 0.0.0.0 --port 5173]
+ 3: 0xc61f4d node::TrapWebAssemblyOrContinue(int, siginfo_t*, void*) [npm run dev --host 0.0.0.0 --port 5173]
+ 4: 0x71f686a42520  [/lib/x86_64-linux-gnu/libc.so.6]
+ 5: 0x2a2ac000 

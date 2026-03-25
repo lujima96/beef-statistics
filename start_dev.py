@@ -180,6 +180,26 @@ def start_db() -> None:
             err("Database not healthy after 60s; continuing anyway.")
 
 
+def ensure_db_schema() -> None:
+    script_path = ROOT / "scripts" / "scripts" / "db_cli.py"
+    if not script_path.exists():
+        err(f"Database schema bootstrap script not found at {script_path}; skipping schema apply.")
+        return
+
+    py = which("python") or which("python3")
+    if not py:
+        err("Python not found; cannot apply database schema.")
+        return
+
+    log("Applying database schema and migrations ...")
+    try:
+        subprocess.run([py, str(script_path), "apply"], cwd=ROOT, check=True)
+    except subprocess.CalledProcessError as e:
+        err(f"Failed to apply database schema: {e}")
+    else:
+        log("Database schema is ready.")
+
+
 def start_graphhopper() -> None:
     compose = get_compose_cmd()
     if not compose:
@@ -456,6 +476,7 @@ def main() -> int:
 
     # Start services
     start_db()
+    ensure_db_schema()
     map_path = ensure_graphhopper_map()
     if map_path:
         os.environ.setdefault("GRAPHHOPPER_MAP_FILE", str(map_path))
